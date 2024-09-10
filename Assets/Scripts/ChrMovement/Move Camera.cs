@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test : MonoBehaviour
+public class MoveCamera : MonoBehaviour
 {
+    public Transform cameraPosition;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,6 @@ public class Test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(69 * Time.deltaTime, 69 * Time.deltaTime, 69 * Time.deltaTime);
+        transform.position = cameraPosition.position;
     }
 }
