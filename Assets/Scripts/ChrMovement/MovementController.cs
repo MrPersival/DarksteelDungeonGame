@@ -52,12 +52,15 @@ public class MovementController : MonoBehaviour
             playerRb.drag = 0;
         }
 
-        transform.rotation = orientation.rotation;
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
+    }
+    private void LateUpdate()
+    {
+        transform.rotation = orientation.rotation;
     }
 
     private void MyInput()
