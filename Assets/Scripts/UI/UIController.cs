@@ -13,24 +13,30 @@ public class UIController : MonoBehaviour
     [SerializeField]
     GameObject abilitiesScreen;
     bool isCursorActive = false;
-    float oldTimeScale = 1.0f; //If we will play with time scale, like, for exampel, slow time down, this will protect that.
+    float oldTimeScale = 1.0f; //If we will change time scale, like, for exampel, slow time down, this will protect that.
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-            if (!pauseMenu.activeSelf)
+            if(settingsMenu.activeSelf)
+            {
+                settingsMenu.SetActive(false);
+                pauseMenu.SetActive(true);
+            }
+            else if(!pauseMenu.activeSelf)
             {
                 pauseMenu.SetActive(true);
                 oldTimeScale = Time.timeScale;
                 Time.timeScale = 0;
                 changeCursorState();
             }
-            else
+            else if(pauseMenu.activeSelf)
             {
                 Time.timeScale = oldTimeScale;
                 pauseMenu.SetActive(false);
                 changeCursorState();
             }
+
         }
     }
 
@@ -48,5 +54,11 @@ public class UIController : MonoBehaviour
             Cursor.visible = false;
             isCursorActive = false;
         }
+    }
+
+    public void SettingsButtonClicked()
+    {
+        pauseMenu.SetActive(false);
+        settingsMenu.SetActive(true);
     }
 }
