@@ -8,6 +8,8 @@ public class MovementController : MonoBehaviour
     public float moveSpeed;
 
     public float groundDrag;
+    
+    private Animator playerAnim;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -19,8 +21,8 @@ public class MovementController : MonoBehaviour
 
     public Transform orientation;
 
-    private float horizontalInput;
-    private float verticalInput;
+    public float horizontalInput;
+    public float verticalInput;
 
     private Vector3 moveDirection;
 
@@ -30,6 +32,7 @@ public class MovementController : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        playerAnim = GetComponent<Animator>();
         playerRb.freezeRotation = true;
     }
 
@@ -52,6 +55,14 @@ public class MovementController : MonoBehaviour
             playerRb.drag = 0;
         }
 
+        if (verticalInput > 0 || horizontalInput > 0)
+        {
+            playerAnim.SetFloat("speed", 2f);
+        }
+        else
+        {
+            playerAnim.SetFloat("speed", 1f);
+        }
     }
 
     private void FixedUpdate()
