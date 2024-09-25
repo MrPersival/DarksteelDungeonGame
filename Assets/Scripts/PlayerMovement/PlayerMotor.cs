@@ -16,7 +16,6 @@ public class PlayerMotor : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        enterPoint = GameObject.Find("EnterPoint(Clone)");
     }
 
     // Update is called once per frame
@@ -27,6 +26,7 @@ public class PlayerMotor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             isTeleporting = true; // Set teleport flag
+            enterPoint = GameObject.Find("EnterPoint(Clone)");
             gameObject.transform.position = enterPoint.transform.position + new Vector3(0, 2, 0);
         }
     }
