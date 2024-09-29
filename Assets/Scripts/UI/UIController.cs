@@ -12,48 +12,73 @@ public class UIController : MonoBehaviour
     GameObject inventoryAndStatsScreen;
     [SerializeField]
     GameObject abilitiesScreen;
-    bool isCursorActive = false;
     float oldTimeScale = 1.0f; //If we will change time scale, like, for exampel, slow time down, this will protect that.
-    void Update()
+    //TODO: Maybe rewrite this mess if more ui screens will be added.
+    void Update() 
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-            if(settingsMenu.activeSelf)
+            if(inventoryAndStatsScreen.activeSelf)
             {
-                settingsMenu.SetActive(false);
-                pauseMenu.SetActive(true);
+                inventoryAndStatsScreen.SetActive(false);
+                setCursorVisibility(false);
+                setGamePause(false);
+
             }
-            else if(!pauseMenu.activeSelf)
+            else
             {
-                pauseMenu.SetActive(true);
-                oldTimeScale = Time.timeScale;
-                Time.timeScale = 0;
-                changeCursorState();
+                if (settingsMenu.activeSelf)
+                {
+                    settingsMenu.SetActive(false);
+                    pauseMenu.SetActive(true);
+                }
+                else if (!pauseMenu.activeSelf)
+                {
+                    pauseMenu.SetActive(true);
+                    setGamePause(true);
+                    setCursorVisibility(true);
+                }
+                else if (pauseMenu.activeSelf)
+                {
+                    setGamePause(false);
+                    pauseMenu.SetActive(false);
+                    setCursorVisibility(false);
+                }
             }
-            else if(pauseMenu.activeSelf)
-            {
-                Time.timeScale = oldTimeScale;
-                pauseMenu.SetActive(false);
-                changeCursorState();
-            }
+        }
+
+
+        if(Input.GetKeyUp(KeyCode.I) && inventoryAndStatsScreen.activeSelf)
+        {
+            inventoryAndStatsScreen.SetActive(false);
+            setCursorVisibility(false);
+            setGamePause(false);
 
         }
-    }
-
-    void changeCursorState()
-    {
-        if(!isCursorActive)
+        else if (Input.GetKeyUp(KeyCode.I) && !pauseMenu.activeSelf && !settingsMenu.activeSelf)
         {
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
-            isCursorActive = true;
+            inventoryAndStatsScreen.SetActive(true);
+            setCursorVisibility(true);
+            setGamePause(true);
+        }
+    }
+    void setGamePause(bool state)
+    {
+        if(state)
+        {
+            oldTimeScale = Time.timeScale;
+            Time.timeScale = 0;
         }
         else
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            isCursorActive = false;
+            Time.timeScale = oldTimeScale;
         }
+    }
+    void setCursorVisibility(bool visibility)
+    {
+        if(visibility) Cursor.lockState = CursorLockMode.Confined;
+        else Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = visibility;
     }
 
     public void SettingsButtonClicked()

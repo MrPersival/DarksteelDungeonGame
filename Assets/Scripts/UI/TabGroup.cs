@@ -10,7 +10,7 @@ public class TabGroup : MonoBehaviour
     {
         if(tabButtons == null)
         {
-            tabButtons= new List<TabButton>();
+            tabButtons = new List<TabButton>();
         }
 
         tabButtons.Add(button);
