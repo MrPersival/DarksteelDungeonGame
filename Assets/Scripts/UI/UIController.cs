@@ -86,4 +86,11 @@ public class UIController : MonoBehaviour
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(true);
     }
+
+    public void ResumeButtonClicked()
+    {
+        setGamePause(false);
+        pauseMenu.SetActive(false);
+        setCursorVisibility(false);
+    }
 }
