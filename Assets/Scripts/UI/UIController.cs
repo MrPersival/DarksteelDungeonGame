@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class UIController : MonoBehaviour
     GameObject inventoryAndStatsScreen;
     [SerializeField]
     GameObject abilitiesScreen;
+    [SerializeField]
+    GameObject leaveToMainScreenCheck;
     float oldTimeScale = 1.0f; //If we will change time scale, like, for exampel, slow time down, this will protect that.
     //TODO: Maybe rewrite this mess if more ui screens will be added.
     void Update() 
@@ -24,6 +27,11 @@ public class UIController : MonoBehaviour
                 setCursorVisibility(false);
                 setGamePause(false);
 
+            }
+            else if(leaveToMainScreenCheck.activeSelf)
+            {
+                pauseMenu.SetActive(true);
+                leaveToMainScreenCheck.SetActive(false);
             }
             else
             {
@@ -92,5 +100,23 @@ public class UIController : MonoBehaviour
         setGamePause(false);
         pauseMenu.SetActive(false);
         setCursorVisibility(false);
+    }
+
+    public void LeaveButtonClicked()
+    {
+        pauseMenu.SetActive(false);
+        leaveToMainScreenCheck.SetActive(true);
+    }
+
+    public void CancelLeaveButtonClicked()
+    {
+        pauseMenu.SetActive(true);
+        leaveToMainScreenCheck.SetActive(false);
+    }
+
+    public void AcceptLeaveButtonClicked()
+    {
+        SceneManager.LoadScene(0);
+        setGamePause(false);
     }
 }
