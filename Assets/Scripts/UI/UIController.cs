@@ -15,11 +15,14 @@ public class UIController : MonoBehaviour
     GameObject abilitiesScreen;
     [SerializeField]
     GameObject leaveToMainScreenCheck;
+    [SerializeField]
+    GameObject gameOverScreen;
     float oldTimeScale = 1.0f; //If we will change time scale, like, for exampel, slow time down, this will protect that.
     //TODO: Maybe rewrite this mess if more ui screens will be added.
+
     void Update() 
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.Escape) && !gameOverScreen.activeSelf)
         {
             if(inventoryAndStatsScreen.activeSelf)
             {
@@ -54,6 +57,7 @@ public class UIController : MonoBehaviour
                 }
             }
         }
+
 
 
         if(Input.GetKeyUp(KeyCode.I) && inventoryAndStatsScreen.activeSelf)
@@ -118,5 +122,9 @@ public class UIController : MonoBehaviour
     {
         SceneManager.LoadScene(0);
         setGamePause(false);
+    }
+    public void restartButtonPressed()
+    {
+        SceneManager.LoadScene(1);
     }
 }
