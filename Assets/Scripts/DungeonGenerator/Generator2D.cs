@@ -231,7 +231,12 @@ public class Generator2D : MonoBehaviour {
 
                         if (adjestedRooms < 3 && adjestedRooms > 0)
                         {
-                            Vector2Int roomCoords = adjestedTiles.FirstOrDefault(x => x.Value == CellType.Room).Key;
+                            /*Vector2Int roomCoords = adjestedTiles.FirstOrDefault(x => x.Value == CellType.Room).Key;
+                            List<Vector2Int> roomsCoords = adjestedTiles
+                                .Where(pair => pair.Value == CellType.Room)
+                                .Select(pair => pair.Key)
+                                .ToList();*/
+
                             foreach (Vector2Int coords in adjestedTiles.Keys)
                             {
                                 if (adjestedTiles[coords] == CellType.Room)
@@ -245,25 +250,31 @@ public class Generator2D : MonoBehaviour {
 
                             if (adjestedDoorwaysIn3Tiles == 0 || adjestedHallways == 1)
                             {
-                                if (roomCoords == gridCoords + Vector2Int.left)
+                                foreach (Vector2Int coords in adjestedTiles.Keys)
                                 {
-                                    spawnedRoom.WallNegX.GetComponent<MeshFilter>().mesh = spawnedRoom.doorwayWall;
-                                    spawnedRoom.WallNegX.GetComponent<MeshCollider>().sharedMesh = spawnedRoom.doorwayWall;
-                                }
-                                if (roomCoords == gridCoords + Vector2Int.up) 
-                                {
-                                    spawnedRoom.WallPosZ.GetComponent<MeshFilter>().mesh = spawnedRoom.doorwayWall;
-                                    spawnedRoom.WallPosZ.GetComponent<MeshCollider>().sharedMesh = spawnedRoom.doorwayWall;
-                                }
-                                if (roomCoords == gridCoords + Vector2Int.right)
-                                {
-                                    spawnedRoom.WallPosX.GetComponent<MeshFilter>().mesh = spawnedRoom.doorwayWall;
-                                    spawnedRoom.WallPosX.GetComponent<MeshCollider>().sharedMesh = spawnedRoom.doorwayWall;
-                                }
-                                if (roomCoords == gridCoords + Vector2Int.down) 
-                                {
-                                    spawnedRoom.WallNegZ.GetComponent<MeshFilter>().mesh = spawnedRoom.doorwayWall;
-                                    spawnedRoom.WallNegZ.GetComponent<MeshCollider>().sharedMesh = spawnedRoom.doorwayWall;
+                                    if (adjestedTiles[coords] == CellType.Room)
+                                    {
+                                        if (coords == gridCoords + Vector2Int.left)
+                                        {
+                                            spawnedRoom.WallNegX.GetComponent<MeshFilter>().mesh = spawnedRoom.doorwayWall;
+                                            spawnedRoom.WallNegX.GetComponent<MeshCollider>().sharedMesh = spawnedRoom.doorwayWall;
+                                        }
+                                        if (coords == gridCoords + Vector2Int.up)
+                                        {
+                                            spawnedRoom.WallPosZ.GetComponent<MeshFilter>().mesh = spawnedRoom.doorwayWall;
+                                            spawnedRoom.WallPosZ.GetComponent<MeshCollider>().sharedMesh = spawnedRoom.doorwayWall;
+                                        }
+                                        if (coords == gridCoords + Vector2Int.right)
+                                        {
+                                            spawnedRoom.WallPosX.GetComponent<MeshFilter>().mesh = spawnedRoom.doorwayWall;
+                                            spawnedRoom.WallPosX.GetComponent<MeshCollider>().sharedMesh = spawnedRoom.doorwayWall;
+                                        }
+                                        if (coords == gridCoords + Vector2Int.down)
+                                        {
+                                            spawnedRoom.WallNegZ.GetComponent<MeshFilter>().mesh = spawnedRoom.doorwayWall;
+                                            spawnedRoom.WallNegZ.GetComponent<MeshCollider>().sharedMesh = spawnedRoom.doorwayWall;
+                                        }
+                                    }
                                 }
                                 grid[gridCoords] = CellType.Doorway;
                                 spawnedRoom.transform.Find("Floor").GetComponent<MeshRenderer>().material = greenMaterial;
