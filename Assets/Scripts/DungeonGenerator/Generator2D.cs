@@ -277,12 +277,14 @@ public class Generator2D : MonoBehaviour {
                                     }
                                 }
                                 grid[gridCoords] = CellType.Doorway;
+                                spawnedRoom.tag = "Doorway";
                                 spawnedRoom.transform.Find("Floor").GetComponent<MeshRenderer>().material = greenMaterial;
                             }
                         }
                     }
                     if (grid[gridCoords] == CellType.Room)
                     {
+                        spawnedRoom.tag = "Room";
                         lastSpawnedRoom = spawnedRoom.transform;
                         if (!isEnterPointGenerated)
                         {
