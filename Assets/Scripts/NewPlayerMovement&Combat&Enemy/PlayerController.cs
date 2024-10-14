@@ -106,12 +106,12 @@ public class PlayerController : MonoBehaviour
     void OnDisable()
     { input.Disable(); }
 
-    void Jump()
-    {
+    //void Jump()
+    //{
         // Adds force to the player rigidbody to jump
-        if (isGrounded)
-            _PlayerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
-    }
+       // if (isGrounded)
+            //_PlayerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+   // }
 
     public void Sprint()
     {
@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
 
     void AssignInputs()
     {
-        input.Jump.performed += ctx => Jump();
+        //input.Jump.performed += ctx => Jump();
         input.Attack.started += ctx => Attack();
         input.Sprint.performed += ctx => Sprint();
     }
@@ -189,21 +189,24 @@ public class PlayerController : MonoBehaviour
     {
         if(!readyToAttack || attacking) return;
 
-        readyToAttack = false;
-        attacking = true;
+        if (!sprinting) 
+        {
+            readyToAttack = false;
+            attacking = true;
 
-        Invoke(nameof(ResetAttack), attackSpeed);
-        Invoke(nameof(AttackRaycast), attackDelay);
+            Invoke(nameof(ResetAttack), attackSpeed);
+            Invoke(nameof(AttackRaycast), attackDelay);
 
-        audioSource.pitch = Random.Range(0.9f, 1.1f);
-        audioSource.PlayOneShot(swordSwing);
+            audioSource.pitch = Random.Range(0.9f, 1.1f);
+            audioSource.PlayOneShot(swordSwing);
+        }
 
-        if(attackCount == 0)
+        if(attackCount == 0 && !sprinting)
         {
             ChangeAnimationState(ATTACK1);
             attackCount++;
         }
-        else
+        else if (attackCount == 1 && !sprinting)
         {
             ChangeAnimationState(ATTACK2);
             attackCount = 0;
@@ -218,7 +221,7 @@ public class PlayerController : MonoBehaviour
 
     void AttackRaycast()
     {
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
+        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer) && !sprinting)
         { 
             HitTarget(hit.point);
 
