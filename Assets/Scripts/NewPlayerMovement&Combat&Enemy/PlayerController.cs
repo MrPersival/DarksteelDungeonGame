@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     CharacterController controller;
     Animator animator;
     AudioSource audioSource;
+    //AudioSource movingSFX;
+
+    //public AudioClip walkingsound;
 
     [Header("Controller")]
     public float moveSpeed = 5;
@@ -159,10 +162,17 @@ public class PlayerController : MonoBehaviour
         // If player is not attacking
         if(!attacking)
         {
+            //movingSFX.clip = walkingsound;
             if(_PlayerVelocity.x == 0 &&_PlayerVelocity.z == 0)
-            { ChangeAnimationState(IDLE); }
+            { 
+                ChangeAnimationState(IDLE);
+                //movingSFX.Stop();
+            }
             else
-            { ChangeAnimationState(WALK); }
+            { 
+                ChangeAnimationState(WALK);
+                //movingSFX.Play();
+            }
         }
     }
 
