@@ -11,9 +11,6 @@ public class PlayerController : MonoBehaviour
     CharacterController controller;
     Animator animator;
     AudioSource audioSource;
-    //AudioSource movingSFX;
-
-    //public AudioClip walkingsound;
 
     [Header("Controller")]
     public float moveSpeed = 5;
@@ -39,6 +36,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
 
+
         playerInput = new PlayerInput();
         input = playerInput.Main;
         AssignInputs();
@@ -52,7 +50,7 @@ public class PlayerController : MonoBehaviour
         isGrounded = controller.isGrounded;
 
         // Repeat Inputs
-        if(input.Attack.IsPressed())
+        if (input.Attack.IsPressed())
         { Attack(); }
 
         SetAnimations();
@@ -142,10 +140,12 @@ public class PlayerController : MonoBehaviour
 
     public const string IDLE = "Idle";
     public const string WALK = "Walk";
+    public const string RUN = "Run";
     public const string ATTACK1 = "Attack 1";
     public const string ATTACK2 = "Attack 2";
 
     string currentAnimationState;
+
 
     public void ChangeAnimationState(string newState) 
     {
@@ -155,24 +155,25 @@ public class PlayerController : MonoBehaviour
         // PLAY THE ANIMATION //
         currentAnimationState = newState;
         animator.CrossFadeInFixedTime(currentAnimationState, 0.2f);
+
     }
 
     void SetAnimations()
     {
         // If player is not attacking
-        if(!attacking)
+        if (!attacking)
         {
-            //movingSFX.clip = walkingsound;
-            if(_PlayerVelocity.x == 0 &&_PlayerVelocity.z == 0)
+            if(!sprinting)
             { 
                 ChangeAnimationState(IDLE);
-                //movingSFX.Stop();
+                
             }
-            else
-            { 
-                ChangeAnimationState(WALK);
-                //movingSFX.Play();
-            }
+            
+            else if (sprinting && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) == true)
+            {
+                ChangeAnimationState(RUN); // Fix one problem, you can hold shift and then take one step. If you then stop, the running animation will then continue to play until you don't hold shift anymore
+               
+            } // VERY VERY LOW PRIORETY: If the player holds shift, then exists out and then goes back in (while still holding shift), then the player will run when not holding shift and walk when holding shift
         }
     }
 

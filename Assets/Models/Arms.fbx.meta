@@ -1,23 +1,23 @@
 fileFormatVersion: 2
 guid: c0093a41c6e486543ae98bb8975aa84e
 ModelImporter:
-  serializedVersion: 21300
+  serializedVersion: 22200
   internalIDToNameTable:
   - first:
       74: 2449926736793008914
-    second: CharacterArmature|Consumable_Drink.001
+    second: CharacterArmature|Sword_Run
   - first:
       74: 6160728808213848692
-    second: CharacterArmature|Fists_Block
+    second: CharacterArmature|Sword_Run (1)
   - first:
       74: 230734795802728137
     second: CharacterArmature|Fists_Idle
   - first:
       74: -6630150197971251076
-    second: CharacterArmature|Lefthand_Spell1
+    second: CharacterArmature|Sword_Run
   - first:
       74: 7070147259824609170
-    second: CharacterArmature|Sword_Block
+    second: CharacterArmature|Sword_Run
   - first:
       74: -6235347698650002986
     second: CharacterArmature|Sword_Idle
@@ -175,6 +175,35 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Sword_Run
+      takeName: CharacterArmature|Sword_Idle
+      internalID: 2449926736793008914
+      firstFrame: 0
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -183,6 +212,7 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -210,6 +240,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -242,6 +273,7 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 0
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
