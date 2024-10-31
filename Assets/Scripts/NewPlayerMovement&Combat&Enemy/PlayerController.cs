@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        Time.timeScale = 1f;
     }
 
     void Update()
@@ -187,6 +189,7 @@ public class PlayerController : MonoBehaviour
     public float attackSpeed = 1f;
     public int attackDamage = 1;
     public LayerMask attackLayer;
+    public float enemyThrowBackForce = 100f;
 
     public GameObject hitEffect;
     public AudioClip swordSwing;
@@ -232,13 +235,15 @@ public class PlayerController : MonoBehaviour
 
     void AttackRaycast()
     {
+        Debug.Log("Starting raycast");
         if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer) && !sprinting)
         { 
+            Debug.Log(hit.collider.name);
             HitTarget(hit.point);
+            Vector3 knockbackForce = transform.forward * enemyThrowBackForce;
+            if(hit.transform.TryGetComponent<EnemyHitPoints>(out EnemyHitPoints T)) T.TakeDamage(attackDamage, knockbackForce);
 
-            if(hit.transform.TryGetComponent<Actor>(out Actor T))
-            { T.TakeDamage(attackDamage); }
-        } 
+        }
     }
 
     void HitTarget(Vector3 pos)

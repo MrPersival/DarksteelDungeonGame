@@ -6,6 +6,7 @@ using Graphs;
 using static UnityEditor.FilePathAttribute;
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using Unity.AI.Navigation;
 
 public class Generator2D : MonoBehaviour {
     enum CellType {
@@ -300,11 +301,9 @@ public class Generator2D : MonoBehaviour {
         if(lastSpawnedRoom != null)
         {
             Instantiate(exitPointPrefab, lastSpawnedRoom.position, Quaternion.identity);
-
+            lastSpawnedRoom.gameObject.GetComponent<NavMeshSurface>().enabled = true;
+            lastSpawnedRoom.gameObject.GetComponent<NavMeshSurface>().BuildNavMesh();
         }
-
-
-
     }
     /*
      Requied for testing puproses

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 public class RoomTile : MonoBehaviour
@@ -8,6 +9,7 @@ public class RoomTile : MonoBehaviour
     public GameObject WallPosZ;
     public GameObject WallNegX;
     public GameObject WallNegZ;
+    public bool isLastRoom;
     List<GameObject> walls = new List<GameObject>();
     List<GameObject> solidWalls = new List<GameObject>();
 
@@ -16,6 +18,11 @@ public class RoomTile : MonoBehaviour
     //TODO: Some interior, loot and so on generation will be here.
     private void Start()
     {
+        if (isLastRoom)
+        {
+            gameObject.GetComponent<NavMeshSurface>().enabled = true;
+            gameObject.GetComponent<NavMeshSurface>().BuildNavMesh();
+        }
         startGeneration();
     }
 
