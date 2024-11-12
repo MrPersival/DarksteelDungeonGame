@@ -10,6 +10,9 @@ public class InputManager : MonoBehaviour
 
     private PlayerMotor motor;
     private PlayerLook look;
+
+    public object OnFoot { get; internal set; }
+
     // Start is called before the first frame update
     void Awake()
     {

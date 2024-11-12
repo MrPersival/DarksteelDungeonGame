@@ -8,6 +8,7 @@ public class EnemyHitPoints : MonoBehaviour
     float currentHitPoints;
     public float maxHitPoints;
     public GameObject deathEffect;
+    public GameObject objectDrop;
 
     void Start()
     {
@@ -52,9 +53,11 @@ public class EnemyHitPoints : MonoBehaviour
     void Death()
     {
         GameObject deathParticle = Instantiate(deathEffect, transform.position, deathEffect.transform.rotation);
+        Instantiate(objectDrop, transform.position + new Vector3(0, 1, 0), objectDrop.transform.rotation);
         //deathEffect.transform.position = transform.position;
         Destroy(deathParticle, 20f);
         // TEMPORARY: Destroy Object
         Destroy(gameObject, 0.25f);
+
     }
 }

@@ -2727,6 +2727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHitPoints: 20
   deathEffect: {fileID: 8098925621626850962, guid: 89da6a18b8f6abf41940bada9cf23c49, type: 3}
+  objectDrop: {fileID: 652454497355366312, guid: 0964a4fb313e9fd4899360f93a2e7ebc, type: 3}
 --- !u!136 &615953470937478048
 CapsuleCollider:
   m_ObjectHideFlags: 0
