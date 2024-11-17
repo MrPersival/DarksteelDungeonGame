@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 175916181099236987, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 262757656334924862, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
       propertyPath: speed.maxValue
       value: 5
@@ -88,11 +92,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3212398801749363957, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436325092571482514, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5044290252434347780, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
       propertyPath: m_Name
       value: MeleeSkeletonHeavy Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5044290252434347780, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6477884232810440234, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8713563042520782155, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

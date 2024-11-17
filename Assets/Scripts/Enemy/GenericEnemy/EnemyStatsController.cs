@@ -12,13 +12,16 @@ public class EnemyStatsController : MonoBehaviour
     public Stat damage;
     public Stat attackSpeedCoef;
     public Stat hitPoints;
+    public Stat enemyProjectileSpeed;
     void Start()
     {
         if (TryGetComponent<NavMeshAgent>(out NavMeshAgent agent)) agent.speed = speed.generateValue();
         if (TryGetComponent<DamageControllerMelee>(out DamageControllerMelee damageController)) damageController.rawDamage = damage.generateValue();
+        if (TryGetComponent<RangeEnemyProjectileAttack>(out RangeEnemyProjectileAttack projectileAttack)) projectileAttack.damage = damage.generateValue();
         if (TryGetComponent<Animator>(out Animator animator)) animator.SetFloat("attackSpeed", attackSpeedCoef.generateValue());
         if (TryGetComponent<EnemyHitPoints>(out EnemyHitPoints enemyHitPoints)) enemyHitPoints.maxHitPoints = hitPoints.generateValue();
-
+        if (TryGetComponent<RangeEnemyProjectileAttack>(out RangeEnemyProjectileAttack projectileSpeed)) projectileSpeed.speed = enemyProjectileSpeed.generateValue();
+        Debug.Log(enemyProjectileSpeed.lastGeneratedValue);
     }
 
     [System.Serializable]
