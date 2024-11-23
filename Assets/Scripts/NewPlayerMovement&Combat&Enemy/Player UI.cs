@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using static UnityEditor.ShaderData;
+using System.Drawing;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 
 public class PlayerUI : MonoBehaviour
 {
@@ -16,4 +20,6 @@ public class PlayerUI : MonoBehaviour
     {
         promptText.text = promptMessage;
     }
+
+   
 }
