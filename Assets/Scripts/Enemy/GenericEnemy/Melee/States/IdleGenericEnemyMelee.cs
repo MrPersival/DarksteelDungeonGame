@@ -34,8 +34,7 @@ public class IdleGenericEnemyMelee : StateMachineBehaviour
                 //Debug.Log("Hit: " + hit.transform.name);
                 if(hit.transform == player)
                 {
-                    if (distanceToPlayer <= distanceToAttack) animator.SetBool("isAttacking", true);
-                    else animator.SetBool("isChasing", true);
+                    animator.SetBool("isChasing", true);
                 }
             }
         }

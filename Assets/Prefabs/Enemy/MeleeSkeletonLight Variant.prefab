@@ -8,6 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -955109473851097917, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
+      propertyPath: items.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -955109473851097917, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
+      propertyPath: items.Array.data[0].itemToDrop
+      value: 
+      objectReference: {fileID: 8058177010834940280, guid: d8319b760ce97f246a9e61203a6b3789, type: 3}
+    - target: {fileID: -955109473851097917, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
+      propertyPath: items.Array.data[1].itemToDrop
+      value: 
+      objectReference: {fileID: 3233172872831310601, guid: 1553cfd75d3b11f49a0f4d18bc29ec3d, type: 3}
+    - target: {fileID: -955109473851097917, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
+      propertyPath: items.Array.data[0].chanseToDrop
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -955109473851097917, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
+      propertyPath: items.Array.data[1].chanseToDrop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 262757656334924862, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
       propertyPath: speed.maxValue
       value: 10
@@ -87,6 +107,10 @@ PrefabInstance:
     - target: {fileID: 2924337754791538899, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3607917131067916666, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
+      propertyPath: m_Acceleration
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3607917131067916666, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
       propertyPath: m_AngularSpeed

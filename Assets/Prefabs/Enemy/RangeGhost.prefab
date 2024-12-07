@@ -1202,6 +1202,7 @@ GameObject:
   - component: {fileID: 2930304344015537853}
   - component: {fileID: 5035978369638928402}
   - component: {fileID: 5077042977893040301}
+  - component: {fileID: -6612239109035340905}
   m_Layer: 6
   m_Name: RangeGhost
   m_TagString: Untagged
@@ -1298,7 +1299,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHitPoints: 20
   deathEffect: {fileID: 8098925621626850962, guid: 89da6a18b8f6abf41940bada9cf23c49, type: 3}
-  objectDrop: {fileID: 652454497355366312, guid: 0964a4fb313e9fd4899360f93a2e7ebc, type: 3}
 --- !u!136 &1272842493700697613
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1396,6 +1396,24 @@ MonoBehaviour:
   Projectile: {fileID: 4538708892686850063, guid: cb25a857e22b6ca41b3a984dd3cef7a7, type: 3}
   damage: 0
   speed: 0
+--- !u!114 &-6612239109035340905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2413745798541882187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf5c80dfc9ec0945bd96bf702d962e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - chanseToDrop: 50
+    itemToDrop: {fileID: 8058177010834940280, guid: d8319b760ce97f246a9e61203a6b3789, type: 3}
+  - chanseToDrop: 1
+    itemToDrop: {fileID: 3233172872831310601, guid: 1553cfd75d3b11f49a0f4d18bc29ec3d, type: 3}
+  chanseToDrop: 10
 --- !u!1 &2526525463856803275
 GameObject:
   m_ObjectHideFlags: 0

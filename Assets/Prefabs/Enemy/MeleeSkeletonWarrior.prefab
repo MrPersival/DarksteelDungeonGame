@@ -2617,6 +2617,7 @@ GameObject:
   - component: {fileID: 615953470937478048}
   - component: {fileID: 3743187847161951934}
   - component: {fileID: 262757656334924862}
+  - component: {fileID: -955109473851097917}
   m_Layer: 6
   m_Name: MeleeSkeletonWarrior
   m_TagString: Untagged
@@ -2727,7 +2728,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHitPoints: 20
   deathEffect: {fileID: 8098925621626850962, guid: 89da6a18b8f6abf41940bada9cf23c49, type: 3}
-  objectDrop: {fileID: 652454497355366312, guid: 0964a4fb313e9fd4899360f93a2e7ebc, type: 3}
 --- !u!136 &615953470937478048
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2806,6 +2806,28 @@ MonoBehaviour:
     maxValue: 20
     minValue: 7
     lastGeneratedValue: 0
+  enemyProjectileSpeed:
+    maxValue: 0
+    minValue: 0
+    lastGeneratedValue: 0
+--- !u!114 &-955109473851097917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5044290252434347780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf5c80dfc9ec0945bd96bf702d962e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - chanseToDrop: 50
+    itemToDrop: {fileID: 8058177010834940280, guid: d8319b760ce97f246a9e61203a6b3789, type: 3}
+  - chanseToDrop: 1
+    itemToDrop: {fileID: 3233172872831310601, guid: 1553cfd75d3b11f49a0f4d18bc29ec3d, type: 3}
+  chanseToDrop: 10
 --- !u!1 &5194205844022925635
 GameObject:
   m_ObjectHideFlags: 0

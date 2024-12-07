@@ -30,7 +30,8 @@ public class PlayerHitPoints : MonoBehaviour
 
     private void updateHPonUI()
     {
-        hpSlider.maxValue = maxHitPoints;
+        if (maxHitPoints >= currentHitPoints) hpSlider.maxValue = maxHitPoints;
+        else hpSlider.maxValue = currentHitPoints;
         hpSlider.value = currentHitPoints;
         hpText.text = currentHitPoints + "/" + maxHitPoints;
     }
@@ -44,5 +45,20 @@ public class PlayerHitPoints : MonoBehaviour
         Time.timeScale = 0f;
         gameOverScreen.SetActive(true);
         
+    }
+
+    public bool restoreHP(float hpToRestore, bool isGoingOverMaxHp = false)
+    {
+        if(maxHitPoints > currentHitPoints + hpToRestore || isGoingOverMaxHp)
+        {
+            currentHitPoints += hpToRestore;
+        }
+        else
+        {
+            if(currentHitPoints >= maxHitPoints) return false;
+            currentHitPoints = maxHitPoints;
+        }
+        updateHPonUI();
+        return true;
     }
 }

@@ -279,7 +279,7 @@ public class PlayerController : MonoBehaviour
     public float attackDistance = 3f;
     public float attackDelay = 0.4f;
     public float attackSpeed = 1f;
-    public int attackDamage = 1;
+    public float attackDamage = 1;
     public LayerMask attackLayer;
     public float enemyThrowBackForce = 100f;
 
@@ -327,7 +327,7 @@ public class PlayerController : MonoBehaviour
 
     void AttackRaycast()
     {
-        Debug.Log("Starting raycast");
+        //Debug.Log("Starting raycast");
         if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer) && !isSprinting)
         { 
             Debug.Log(hit.collider.name);

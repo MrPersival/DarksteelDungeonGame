@@ -8,8 +8,6 @@ public class EnemyHitPoints : MonoBehaviour
     float currentHitPoints;
     public float maxHitPoints;
     public GameObject deathEffect;
-    public GameObject objectDrop;
-
     void Start()
     {
         currentHitPoints = maxHitPoints;
@@ -53,11 +51,10 @@ public class EnemyHitPoints : MonoBehaviour
     void Death()
     {
         GameObject deathParticle = Instantiate(deathEffect, transform.position, deathEffect.transform.rotation);
-        Instantiate(objectDrop, transform.position + new Vector3(0, 1, 0), Quaternion.Euler(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f)));
         //deathEffect.transform.position = transform.position;
+        if (gameObject.TryGetComponent<ItemDrop>(out ItemDrop itemDrop)) itemDrop.dropItem();
         Destroy(deathParticle, 20f);
         // TEMPORARY: Destroy Object
         Destroy(gameObject, 0.25f);
-
     }
 }
