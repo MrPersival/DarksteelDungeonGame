@@ -83,9 +83,9 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            isTeleporting = true; // Set teleport flag
+            //isTeleporting = true; // Set teleport flag
             enterPoint = GameObject.Find("EnterPoint(Clone)");
-            gameObject.transform.position = enterPoint.transform.position + new Vector3(0, 2, 0);
+            teleport(enterPoint.transform.position);
         }
     }
 
@@ -94,6 +94,12 @@ public class PlayerController : MonoBehaviour
 
     void LateUpdate() 
     { LookInput(input.Look.ReadValue<Vector2>()); }
+
+    public void teleport(Vector3 position)
+    {
+        isTeleporting = true; // Set teleport flag
+        gameObject.transform.position = position;
+    }
 
     void MoveInput(Vector2 input)
     {

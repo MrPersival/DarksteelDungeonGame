@@ -7,6 +7,7 @@ using static UnityEditor.FilePathAttribute;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using Unity.AI.Navigation;
+using System;
 
 public class Generator2D : MonoBehaviour {
     enum CellType {
@@ -29,6 +30,8 @@ public class Generator2D : MonoBehaviour {
         }
     }
 
+    public int bossLevelNumber = 3;
+
     [SerializeField]
     Vector2Int size;
     [SerializeField]
@@ -49,16 +52,38 @@ public class Generator2D : MonoBehaviour {
     Material blueMaterial;
     [SerializeField]
     Material greenMaterial;
+    [SerializeField]
+    GameObject stairsDownTile;
+    [SerializeField]
+    float levelHeightOffsets;
+    [SerializeField]
+    GameObject stairsUpTile;
+    [SerializeField]
+    DungeonController dungeonController;
+    [SerializeField]
+    GameObject bossLevel;
 
     Random random;
     Grid2D<CellType> grid;
     List<Room> rooms;
     Delaunay2D delaunay;
     HashSet<Prim.Edge> selectedEdges;
+    int currentLevel = 1;
 
     void Start() {
-        Generate();
-        GenerateDungeonFromGrid();
+
+        for (int i = 1; i < bossLevelNumber; i++)
+        {
+            Debug.Log("Generated dungeon, level: " + Convert.ToString(currentLevel));
+            Generate();
+            GenerateDungeonFromGrid();
+            currentLevel++;
+        }
+        //TODO: Generate boss level
+        GameObject spawnedBossLevel = Instantiate(bossLevel, new Vector3(0, 0, currentLevel * levelHeightOffsets), Quaternion.identity);
+        dungeonController.levels.Add(spawnedBossLevel);
+        spawnedBossLevel.SetActive(false);
+        dungeonController.generationDone();
     }
 
     void Generate() {
@@ -199,6 +224,7 @@ public class Generator2D : MonoBehaviour {
         bool isEnterPointGenerated = false;
         Transform lastSpawnedRoom = null;
         //Debug.Log("Entered method");
+        Transform parentObject = new GameObject("Level " + Convert.ToString(currentLevel)).transform;
         for (int x = 0; x < grid.Size.x; x++)
         {
             for (int y = 0; y < grid.Size.y; y++)
@@ -207,7 +233,8 @@ public class Generator2D : MonoBehaviour {
                 Vector2Int spawnCoord = new Vector2Int(x * 5, y * 5);
                 if (grid[gridCoords] != CellType.None)
                 {
-                    RoomTile spawnedRoom = Instantiate(roomTilePrefab, new Vector3(spawnCoord.x, 0, spawnCoord.y), Quaternion.identity).GetComponent<RoomTile>();
+                    RoomTile spawnedRoom = Instantiate(roomTilePrefab, new Vector3(spawnCoord.x, (currentLevel - 1) * levelHeightOffsets, spawnCoord.y), Quaternion.identity).GetComponent<RoomTile>();
+                    spawnedRoom.transform.SetParent(parentObject);
                     Dictionary<Vector2Int, CellType> adjestedTiles = grid.getAdjestedTiles(gridCoords);
                     if (grid.getObjOnCell(gridCoords + Vector2Int.left) == CellType.None) spawnedRoom.WallNegX.SetActive(true);
                     if (grid.getObjOnCell(gridCoords + Vector2Int.up) == CellType.None) spawnedRoom.WallPosZ.SetActive(true);
@@ -289,7 +316,12 @@ public class Generator2D : MonoBehaviour {
                         lastSpawnedRoom = spawnedRoom.transform;
                         if (!isEnterPointGenerated)
                         {
-                            Instantiate(enterPointTilePrefab, new Vector3(spawnCoord.x, 0, spawnCoord.y), Quaternion.identity);
+                            Instantiate(enterPointTilePrefab, new Vector3(spawnCoord.x, lastSpawnedRoom.transform.position.y + 2, spawnCoord.y), Quaternion.identity).
+                                transform.SetParent(parentObject);
+                            lastSpawnedRoom.GetComponent<RoomTile>().WallNegX.SetActive(false);
+                            lastSpawnedRoom.GetComponent<RoomTile>().isHallway = true;
+                            Instantiate(stairsUpTile, lastSpawnedRoom.position + new Vector3(-tileSizeCoef - 3.25f, 2, -1), Quaternion.Euler(0, -270, 0)).
+                                transform.SetParent(parentObject);
                             isEnterPointGenerated = true;
                         }
                     }
@@ -300,10 +332,18 @@ public class Generator2D : MonoBehaviour {
 
         if(lastSpawnedRoom != null)
         {
-            Instantiate(exitPointPrefab, lastSpawnedRoom.position, Quaternion.identity);
+            lastSpawnedRoom.GetComponent<RoomTile>().WallPosX.SetActive(false);
+            lastSpawnedRoom.GetComponent<RoomTile>().isHallway = true;
+            Instantiate(stairsDownTile, lastSpawnedRoom.position + new Vector3(1, 0, -1.5f), Quaternion.Euler(0, 90, 0)).
+                transform.SetParent(parentObject);
+            Instantiate(exitPointPrefab, lastSpawnedRoom.position + new Vector3(0, 2, 0), Quaternion.identity).
+                transform.SetParent(parentObject);
             lastSpawnedRoom.gameObject.GetComponent<NavMeshSurface>().enabled = true;
             lastSpawnedRoom.gameObject.GetComponent<NavMeshSurface>().BuildNavMesh();
         }
+
+        dungeonController.levels.Add(parentObject.gameObject);
+        parentObject.gameObject.SetActive(false);
     }
     /*
      Requied for testing puproses

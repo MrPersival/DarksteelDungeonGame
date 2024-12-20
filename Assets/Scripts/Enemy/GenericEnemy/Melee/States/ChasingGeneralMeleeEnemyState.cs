@@ -53,7 +53,7 @@ public class ChasingGeneralMeleeEnemyState : StateMachineBehaviour
                 animator.SetBool("isAttacking", true);
             }
         }
-        Debug.Log(agent.destination);
+        //Debug.Log(agent.destination);
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

@@ -19,13 +19,13 @@ public class DamageControllerMelee : MonoBehaviour
 
     public void OnTriggerEnter(Collider col)
     {
-        //Debug.Log("Trigger enetered by: " + col.name);
+        Debug.Log("Trigger enetered by: " + col.name);
         if(col.CompareTag("Player")) playersInAttackRange.Add(col.GetComponent<PlayerHitPoints>());
     }
 
     private void OnTriggerExit(Collider col)
     {
-        //Debug.Log("Trigger exited by: " + col.name);
+        Debug.Log("Trigger exited by: " + col.name);
         if (col.CompareTag("Player")) playersInAttackRange.Remove(col.GetComponent<PlayerHitPoints>());
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,6 +18,12 @@ public class UIController : MonoBehaviour
     GameObject leaveToMainScreenCheck;
     [SerializeField]
     GameObject gameOverScreen;
+    [SerializeField]
+    GameObject winScreen;
+    [SerializeField]
+    GameObject textAdditionalInfoBG;
+    [SerializeField]
+    TextMeshProUGUI textAdditionalInfo;
     float oldTimeScale = 1.0f; //If we will change time scale, like, for exampel, slow time down, this will protect that.
     //TODO: Maybe rewrite this mess if more ui screens will be added.
 
@@ -126,5 +133,21 @@ public class UIController : MonoBehaviour
     public void restartButtonPressed()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void changeTooltipText(string text)
+    {
+        if(text == "" || text == null) textAdditionalInfoBG.SetActive(false);
+        else
+        {
+            textAdditionalInfoBG.SetActive(true);
+            textAdditionalInfo.text = text;
+        }
+    }
+
+    public void gameWon()
+    {
+        winScreen.SetActive(true);
+        setGamePause(true);
     }
 }
