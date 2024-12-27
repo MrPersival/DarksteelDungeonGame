@@ -19,7 +19,7 @@ public class EnemyStatsController : MonoBehaviour
         if (TryGetComponent<DamageControllerMelee>(out DamageControllerMelee damageController)) damageController.rawDamage = damage.generateValue();
         if (TryGetComponent<RangeEnemyProjectileAttack>(out RangeEnemyProjectileAttack projectileAttack)) projectileAttack.damage = damage.generateValue();
         if (TryGetComponent<Animator>(out Animator animator)) animator.SetFloat("attackSpeed", attackSpeedCoef.generateValue());
-        if (TryGetComponent<EnemyHitPoints>(out EnemyHitPoints enemyHitPoints)) enemyHitPoints.maxHitPoints = hitPoints.generateValue();
+        if (TryGetComponent<EnemyHitPoints>(out EnemyHitPoints enemyHitPoints)) enemyHitPoints.setmaxAndCurrentHp(hitPoints.generateValue());
         if (TryGetComponent<RangeEnemyProjectileAttack>(out RangeEnemyProjectileAttack projectileSpeed)) projectileSpeed.speed = enemyProjectileSpeed.generateValue();
         //Debug.Log(enemyProjectileSpeed.lastGeneratedValue);
     }
