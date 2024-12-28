@@ -6,11 +6,13 @@ public class Footsteps : MonoBehaviour
 {
     public AudioSource movingAudioSource;
     public AudioClip movingSound;
+    private PlayerController playerControllerScript;
 
     private bool isPlaying = false; // Track if audio is currently playing
 
     void Start()
     {
+        playerControllerScript = GetComponent<PlayerController>();
         // Assign the clip if not set directly on the AudioSource
         if (movingAudioSource.clip == null && movingSound != null)
         {
@@ -29,7 +31,7 @@ public class Footsteps : MonoBehaviour
         if (isMoving)
         {
             // Adjust pitch based on Left Shift
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (playerControllerScript.isSprinting)
             {
                 movingAudioSource.pitch = 2f; // Running pitch
             }

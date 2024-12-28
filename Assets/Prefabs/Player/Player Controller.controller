@@ -127,7 +127,7 @@ AnimatorStateMachine:
     m_Position: {x: 310, y: 190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -196172232790218139}
-    m_Position: {x: 590, y: 60, z: 0}
+    m_Position: {x: 560, y: -10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2582273771587089801}
     m_Position: {x: 310, y: 250, z: 0}
@@ -148,7 +148,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ee
+  m_Name: Dodge
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -161,7 +161,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 2449926736793008914, guid: c0093a41c6e486543ae98bb8975aa84e, type: 3}
+  m_Motion: {fileID: 7400000, guid: 7c532ec21244d6f4988521f2bf3f0115, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

@@ -7,8 +7,16 @@ public class DamageControllerMelee : MonoBehaviour
 {
     List<PlayerHitPoints> playersInAttackRange = new List<PlayerHitPoints>();
     public float rawDamage = 10;
+    AudioSource audiosource;
+    public AudioClip attackSound;
+
+    private void Start()
+    {
+        audiosource = GetComponent<AudioSource>();
+    }
     public void attackFinished()
     {
+        audiosource.PlayOneShot(attackSound);
         //Debug.Log("Giving damage");
         foreach (PlayerHitPoints player in playersInAttackRange)
         {

@@ -38,8 +38,8 @@ public class PlayerHitPoints : MonoBehaviour
 
     void Death()
     {
-        //Play death animation
-        //Record stats
+        //TODO: Play death animation
+        //TODO: Record stats
         UnityEngine.Cursor.visible = true;
         UnityEngine.Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0f;

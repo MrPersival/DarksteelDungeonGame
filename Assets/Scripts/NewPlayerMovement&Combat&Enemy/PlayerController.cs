@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     CharacterController controller;
     Animator animator;
     AudioSource audioSource;
+    public AudioClip dodgeSound;
 
     [Header("Controller")]
     public float walkSpeed = 5;
@@ -19,7 +20,7 @@ public class PlayerController : MonoBehaviour
     //public float moveSpeed = 5;
     public float gravity = -9.82f;
     public float jumpHeight = 1.2f;
-    private bool isSprinting;
+    public bool isSprinting;
     private bool isTeleporting = false; // Flag to check if teleporting
 
     public float dodgeDistance = 5f;     // Distance covered in a dodge
@@ -188,6 +189,7 @@ public class PlayerController : MonoBehaviour
 
             // Start the dodge
             StartCoroutine(PerformDodge(dodgeDirection));
+            audioSource.PlayOneShot(dodgeSound);
         }
     }
 
@@ -241,6 +243,7 @@ public class PlayerController : MonoBehaviour
     public const string IDLE = "Idle";
     public const string WALK = "Walk";
     public const string RUN = "Run";
+    public const string DODGE = "Dodge";
     public const string ATTACK1 = "Attack 1";
     public const string ATTACK2 = "Attack 2";
 
@@ -258,21 +261,27 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
     void SetAnimations()
     {
         // If player is not attacking
         if (!attacking)
         {
-            if(!isSprinting)
-            { 
-                ChangeAnimationState(IDLE);
-                
+            if (isDodging)
+            {
+                ChangeAnimationState(DODGE);
             }
-            
-            else if (isSprinting)
+
+            if (!isSprinting && !isDodging)
+            {
+                ChangeAnimationState(IDLE);
+
+            }
+
+            else if (isSprinting && !isDodging)
             {
                 ChangeAnimationState(RUN); // Fix one problem, you can hold shift and then take one step. If you then stop, the running animation will then continue to play until you don't hold shift anymore
-               
+
             } // VERY VERY LOW PRIORETY: If the player holds shift, then exists out and then goes back in (while still holding shift), then the player will run when not holding shift and walk when holding shift
         }
     }
