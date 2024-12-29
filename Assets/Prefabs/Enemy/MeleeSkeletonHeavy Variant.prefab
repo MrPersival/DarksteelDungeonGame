@@ -10,14 +10,26 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -955109473851097917, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
       propertyPath: chanseToDrop
-      value: 100
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: -955109473851097917, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
+      propertyPath: items.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -955109473851097917, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
+      propertyPath: items.Array.data[2].itemToDrop
+      value: 
+      objectReference: {fileID: 977223583593731182, guid: 86e5c531f864c274c9bf235d6e3b070a, type: 3}
+    - target: {fileID: -955109473851097917, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
       propertyPath: items.Array.data[0].chanseToDrop
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -955109473851097917, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
       propertyPath: items.Array.data[1].chanseToDrop
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -955109473851097917, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
+      propertyPath: items.Array.data[2].chanseToDrop
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 175916181099236987, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}

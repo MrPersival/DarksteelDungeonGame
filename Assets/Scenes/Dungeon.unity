@@ -4740,7 +4740,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 727.8276, y: 426.7199}
+  m_SizeDelta: {x: 700, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &598289012
 MonoBehaviour:
@@ -4764,7 +4764,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'You completed our MVP!
 
-    Thanks you for playing!
+    Thank you for playing!
 
 
     Game was made
@@ -17137,6 +17137,33 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1868724581 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2429378767112134585, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+  m_PrefabInstance: {fileID: 5983519268469660356}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1868724585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868724581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ff0c2c194cfb940a57665857cc9419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponMeshes:
+  - {fileID: 0}
+  - {fileID: 4300000, guid: b726c726944d7e2479236c22c23009ce, type: 3}
+  weaponMaterials:
+  - {fileID: 0}
+  - {fileID: 2100000, guid: 42b64fdb315e3054ea757d8d1c4bcfa7, type: 2}
+  weaponRotations:
+  - {x: 0, y: 0, z: 270}
+  - {x: 60, y: 0, z: 270}
+  playerControllerScript: {fileID: 7635435194376255142}
 --- !u!1 &1870211335
 GameObject:
   m_ObjectHideFlags: 0
@@ -18288,6 +18315,67 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1001 &1489414060097723150
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 977223583593731182, guid: 86e5c531f864c274c9bf235d6e3b070a, type: 3}
+      propertyPath: m_Name
+      value: SM_Wep_Ornate_Sword_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 977223583593731182, guid: 86e5c531f864c274c9bf235d6e3b070a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136827275421747957, guid: 86e5c531f864c274c9bf235d6e3b070a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20.890839
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136827275421747957, guid: 86e5c531f864c274c9bf235d6e3b070a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.30092263
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136827275421747957, guid: 86e5c531f864c274c9bf235d6e3b070a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -32.43305
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136827275421747957, guid: 86e5c531f864c274c9bf235d6e3b070a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136827275421747957, guid: 86e5c531f864c274c9bf235d6e3b070a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136827275421747957, guid: 86e5c531f864c274c9bf235d6e3b070a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136827275421747957, guid: 86e5c531f864c274c9bf235d6e3b070a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136827275421747957, guid: 86e5c531f864c274c9bf235d6e3b070a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136827275421747957, guid: 86e5c531f864c274c9bf235d6e3b070a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136827275421747957, guid: 86e5c531f864c274c9bf235d6e3b070a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 86e5c531f864c274c9bf235d6e3b070a, type: 3}
 --- !u!114 &3961075790760251969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18411,6 +18499,18 @@ PrefabInstance:
       propertyPath: dodgeSound
       value: 
       objectReference: {fileID: 8300000, guid: 4e349dc959014a845b9aa317d1c2b7f0, type: 3}
+    - target: {fileID: 6216437319847923665, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6216437319847923665, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9841e8a28e7e21148a28af0b72a4fbbb, type: 2}
+    - target: {fileID: 6307042226185106851, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5027575688201399137, guid: 8e88c98d2d626cc4ea44d08262751840, type: 3}
     - target: {fileID: 7609579096739955300, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
       propertyPath: inventoryUi
       value: 
@@ -18434,6 +18534,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5373018104502927261, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7635435194376255133}
+    - targetCorrespondingSourceObject: {fileID: 2429378767112134585, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1868724585}
   m_SourcePrefab: {fileID: 100100000, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
 --- !u!1 &7115655033270120445 stripped
 GameObject:
@@ -18467,6 +18570,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &7635435194376255142 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+  m_PrefabInstance: {fileID: 5983519268469660356}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7115655033270120445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 526ed24552cf0d04684295be1f2c8308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8571101437631296805
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18598,3 +18712,4 @@ SceneRoots:
   - {fileID: 598178652}
   - {fileID: 1947486082}
   - {fileID: 650495302}
+  - {fileID: 1489414060097723150}

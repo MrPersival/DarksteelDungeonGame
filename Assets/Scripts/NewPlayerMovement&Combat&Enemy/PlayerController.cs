@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public PlayerInput.MainActions input;
 
     CharacterController controller;
+    private InventoryItem inventoryItemScript;
     Animator animator;
     AudioSource audioSource;
     public AudioClip dodgeSound;
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     { 
         controller = GetComponent<CharacterController>();
+        inventoryItemScript = GetComponent<InventoryItem>();
         animator = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
 
