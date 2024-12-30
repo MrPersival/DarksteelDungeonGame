@@ -2788,34 +2788,45 @@ MonoBehaviour:
   - presetObj: {fileID: 2958806133467795398}
     minDistanceToSameObj: 40
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 3224875488087783436}
     minDistanceToSameObj: 40
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 7108378428872329337}
     minDistanceToSameObj: 40
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 1218390154323457075}
     minDistanceToSameObj: 20
     isHallwayFrendly: 1
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 1218390154323457075}
     minDistanceToSameObj: 20
     isHallwayFrendly: 1
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 8787355440798247482}
     minDistanceToSameObj: 100
     isHallwayFrendly: 1
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 8540439856604471422}
     minDistanceToSameObj: 50
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 0
   - presetObj: {fileID: 1780113297343875174}
     minDistanceToSameObj: 50
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 0
   - presetObj: {fileID: 8505633030261342715}
     minDistanceToSameObj: 50
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 0
   - presetObj: {fileID: 3765692564177687281}
     minDistanceToSameObj: 50
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 0
   chanceToGenerateSomething: 90
+  enterPointDistance: 30
 --- !u!1 &2661225344513126034
 GameObject:
   m_ObjectHideFlags: 0
@@ -4773,25 +4784,33 @@ MonoBehaviour:
   - presetObj: {fileID: 2554390466412834749}
     minDistanceToSameObj: 40
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 6101112490520094752}
     minDistanceToSameObj: 40
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 729872165868389809}
     minDistanceToSameObj: 40
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 1951866791894318165}
     minDistanceToSameObj: 20
     isHallwayFrendly: 1
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 1951866791894318165}
     minDistanceToSameObj: 20
     isHallwayFrendly: 1
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 6428419360150796675}
     minDistanceToSameObj: 100
     isHallwayFrendly: 1
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 3765692564177687281}
     minDistanceToSameObj: 20
     isHallwayFrendly: 1
+    isEnterRoomFrendly: 0
   chanceToGenerateSomething: 90
+  enterPointDistance: 30
 --- !u!1 &3749172297598504424
 GameObject:
   m_ObjectHideFlags: 0
@@ -6175,19 +6194,25 @@ MonoBehaviour:
   - presetObj: {fileID: 1492102765055262526}
     minDistanceToSameObj: 60
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 8540439856604471422}
     minDistanceToSameObj: 20
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 0
   - presetObj: {fileID: 8505633030261342715}
     minDistanceToSameObj: 20
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 0
   - presetObj: {fileID: 1780113297343875174}
     minDistanceToSameObj: 20
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 0
   - presetObj: {fileID: 3765692564177687281}
     minDistanceToSameObj: 20
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 0
   chanceToGenerateSomething: 25
+  enterPointDistance: 20
 --- !u!65 &8843061965515866149
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18873,22 +18898,29 @@ MonoBehaviour:
   - presetObj: {fileID: 1644539150782742624}
     minDistanceToSameObj: 40
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 6551877934991117871}
     minDistanceToSameObj: 20
     isHallwayFrendly: 1
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 4589107294789185990}
     minDistanceToSameObj: 40
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 5781420053470297519}
     minDistanceToSameObj: 40
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 6551877934991117871}
     minDistanceToSameObj: 20
     isHallwayFrendly: 1
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 4904418922585556254}
     minDistanceToSameObj: 100
     isHallwayFrendly: 1
+    isEnterRoomFrendly: 1
   chanceToGenerateSomething: 80
+  enterPointDistance: 30
 --- !u!1 &6803138267437167786
 GameObject:
   m_ObjectHideFlags: 0
@@ -25331,22 +25363,29 @@ MonoBehaviour:
   - presetObj: {fileID: 706592532086689574}
     minDistanceToSameObj: 40
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 2842441247489980365}
     minDistanceToSameObj: 20
     isHallwayFrendly: 1
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 65271951260011260}
     minDistanceToSameObj: 40
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 7108378428872329337}
     minDistanceToSameObj: 40
     isHallwayFrendly: 0
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 706592532086689574}
     minDistanceToSameObj: 20
     isHallwayFrendly: 1
+    isEnterRoomFrendly: 1
   - presetObj: {fileID: 2068793599221073723}
     minDistanceToSameObj: 100
     isHallwayFrendly: 1
+    isEnterRoomFrendly: 1
   chanceToGenerateSomething: 90
+  enterPointDistance: 30
 --- !u!1 &8452851083308558606
 GameObject:
   m_ObjectHideFlags: 0

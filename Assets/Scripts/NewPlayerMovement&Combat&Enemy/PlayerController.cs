@@ -101,6 +101,7 @@ public class PlayerController : MonoBehaviour
     public void teleport(Vector3 position)
     {
         isTeleporting = true; // Set teleport flag
+        controller.Move(Vector3.zero);
         gameObject.transform.position = position;
     }
 
@@ -310,7 +311,7 @@ public class PlayerController : MonoBehaviour
 
     public void Attack()
     {
-        if(!readyToAttack || attacking) return;
+        if(!readyToAttack || attacking || Time.timeScale == 0f) return;
 
         if (!isSprinting) 
         {

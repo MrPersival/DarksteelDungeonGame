@@ -243,7 +243,7 @@ public class Generator2D : MonoBehaviour {
                     if (grid[gridCoords] == CellType.Hallway)
                     {
                         spawnedRoom.isHallway = true;
-                        spawnedRoom.transform.Find("Floor").GetComponent<MeshRenderer>().material = blueMaterial; //Only for debbuging purposes
+                        //spawnedRoom.transform.Find("Floor").GetComponent<MeshRenderer>().material = blueMaterial; //Only for debbuging purposes
 
                         //This part of code requied to build "beliveble" transitions between hallways and rooms. Sometimes will create double doors.
                         int adjestedRooms = 0;
@@ -306,7 +306,7 @@ public class Generator2D : MonoBehaviour {
                                 }
                                 grid[gridCoords] = CellType.Doorway;
                                 spawnedRoom.tag = "Doorway";
-                                spawnedRoom.transform.Find("Floor").GetComponent<MeshRenderer>().material = greenMaterial;
+                                //spawnedRoom.transform.Find("Floor").GetComponent<MeshRenderer>().material = greenMaterial;
                             }
                         }
                     }

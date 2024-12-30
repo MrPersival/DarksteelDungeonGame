@@ -72,9 +72,9 @@ public class ChangeWeapon : MonoBehaviour
         // Adjust the weapon's rotation
         weaponTransform.localEulerAngles = weaponRotations[weaponIndex];
 
-        Debug.Log("Equipped weapon: " + weaponMeshes[weaponIndex].name +
-                  " with material: " + weaponMaterials[weaponIndex].name +
-                  " and rotation: " + weaponRotations[weaponIndex]);
+        //Debug.Log("Equipped weapon: " + weaponMeshes[weaponIndex].name +
+                  //" with material: " + weaponMaterials[weaponIndex].name +
+                  //" and rotation: " + weaponRotations[weaponIndex]);
     }
 }
 

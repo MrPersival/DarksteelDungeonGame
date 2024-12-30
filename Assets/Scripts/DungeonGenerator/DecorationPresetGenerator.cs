@@ -10,6 +10,8 @@ public class DecorationPresetGenerator : MonoBehaviour
     List<GenerationPreset> presets = new List<GenerationPreset>();
     [SerializeField]
     float chanceToGenerateSomething;
+    [SerializeField]
+    float enterPointDistance = 30f;
 
     public void Generate(bool isHallway = false)
     {
@@ -23,6 +25,8 @@ public class DecorationPresetGenerator : MonoBehaviour
                 if(presets.Count <= 0) break;
                 GenerationPreset chosedPreset = presets[Random.Range(0, presets.Count - 1)];
                 if (isHallway && !chosedPreset.isHallwayFrendly) break;
+                if (!chosedPreset.isEnterRoomFrendly &&
+                    Vector3.Distance(GameObject.FindGameObjectWithTag("EnterPoint").transform.position, gameObject.transform.position) < enterPointDistance) break;
                 Collider[] collidersInRange = Physics.OverlapSphere(transform.position, chosedPreset.minDistanceToSameObj);
                 bool isPresetFindedInRadius = false;
                 foreach(Collider collider in collidersInRange)
@@ -50,5 +54,6 @@ public class DecorationPresetGenerator : MonoBehaviour
         public GameObject presetObj;
         public float minDistanceToSameObj;
         public bool isHallwayFrendly;
+        public bool isEnterRoomFrendly;
     }
 }

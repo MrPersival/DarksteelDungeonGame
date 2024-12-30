@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2042113266030082572}
   m_Layer: 0
   m_Name: EnterPoint
-  m_TagString: Untagged
+  m_TagString: EnterPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

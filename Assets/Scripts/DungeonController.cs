@@ -18,38 +18,47 @@ public class DungeonController : MonoBehaviour
 
     public void enteredOnStairs(bool isStairsUp)
     {
-        if(!isStairsUp)
+        if (!isStairsUp)
         {
             if(activeLevel == levels.Count)
             {
                 uiController.gameWon();
             }
-            else
-            {
-                levels[activeLevel - 1].SetActive(false);
-                activeLevel++;
-                levels[activeLevel - 1].SetActive(true);
-                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().teleport(levels[activeLevel - 1].transform.Find("EnterPoint(Clone)").transform.position);
-            }
+            else StartCoroutine(moveToNextLevel(false));
         }
         else
         {
-            if(activeLevel == 1)
+            if (activeLevel == 1)
             {
                 uiController.changeTooltipText("It was hard enough to get here. I don't want to go back.");
             }
-            else
-            {
-                levels[activeLevel - 1].SetActive(false);
-                activeLevel--;
-                levels[activeLevel - 1].SetActive(true);
-                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().teleport(levels[activeLevel - 1].transform.Find("ExitPoint(Clone)").transform.position);
-            }
+            else StartCoroutine(moveToNextLevel(true));
         }
     }
 
     public void exitedFromStairs()
     {
         uiController.changeTooltipText("");
+    }
+
+    private IEnumerator moveToNextLevel(bool isUp)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        yield return new WaitForSeconds(0.75f);
+        if (isUp)
+        {
+            levels[activeLevel - 1].SetActive(false);
+            activeLevel--;
+            levels[activeLevel - 1].SetActive(true);
+            player.GetComponent<PlayerController>().teleport(levels[activeLevel - 1].transform.Find("ExitPoint(Clone)").transform.position);
+        }
+
+        else
+        {
+            levels[activeLevel - 1].SetActive(false);
+            activeLevel++;
+            levels[activeLevel - 1].SetActive(true);
+            player.GetComponent<PlayerController>().teleport(levels[activeLevel - 1].transform.Find("EnterPoint(Clone)").transform.position);
+        }
     }
 }
