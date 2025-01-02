@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -12,7 +13,10 @@ public class PlayerController : MonoBehaviour
     CharacterController controller;
     private InventoryItem inventoryItemScript;
     Animator animator;
+
     AudioSource audioSource;
+
+    [Header("SFX")]
     public AudioClip dodgeSound;
 
     [Header("Controller")]
@@ -49,7 +53,7 @@ public class PlayerController : MonoBehaviour
     float xRotation = 0f;
 
     void Awake()
-    { 
+    {
         controller = GetComponent<CharacterController>();
         inventoryItemScript = GetComponent<InventoryItem>();
         animator = GetComponentInChildren<Animator>();
@@ -79,8 +83,8 @@ public class PlayerController : MonoBehaviour
         Dodge();
 
         // Repeat Inputs
-        if (input.Attack.IsPressed())
-        { Attack(); }
+        // if (input.Attack.IsPressed())
+        // { Attack(); }
 
         SetAnimations();
 
@@ -92,10 +96,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void FixedUpdate() 
+
+    void FixedUpdate()
     { MoveInput(input.Movement.ReadValue<Vector2>()); }
 
-    void LateUpdate() 
+    void LateUpdate()
     { LookInput(input.Look.ReadValue<Vector2>()); }
 
     public void teleport(Vector3 position)
@@ -159,7 +164,7 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(Vector3.up * (mouseX * Time.deltaTime * sensitivity));
     }
 
-    void OnEnable() 
+    void OnEnable()
     { input.Enable(); }
 
     void OnDisable()
@@ -229,7 +234,9 @@ public class PlayerController : MonoBehaviour
 
     void AssignInputs()
     {
-        input.Attack.started += ctx => Attack();
+        // input.Attack.started += ctx => Attack();
+        input.Attack.performed += OnPress;
+        input.Attack.canceled += OnRelease;
 
         // Update sprint button press state
         input.Sprint.performed += ctx => isSprintButtonPressed = true; // Shift key pressed
@@ -249,11 +256,12 @@ public class PlayerController : MonoBehaviour
     public const string DODGE = "Dodge";
     public const string ATTACK1 = "Attack 1";
     public const string ATTACK2 = "Attack 2";
+    public const string HEAVY_ATTACK = "Heavy Attack";
 
     string currentAnimationState;
 
 
-    public void ChangeAnimationState(string newState) 
+    public void ChangeAnimationState(string newState)
     {
         // STOP THE SAME ANIMATION FROM INTERRUPTING WITH ITSELF //
         if (currentAnimationState == newState) return;
@@ -300,42 +308,149 @@ public class PlayerController : MonoBehaviour
     public float attackDamage = 1;
     public LayerMask attackLayer;
     public float enemyThrowBackForce = 100f;
+    public float holdUntilHeavyAttack = 2.5f;
 
     public GameObject hitEffect;
     public AudioClip swordSwing;
     public AudioClip hitSound;
+    //public AudioClip heavySound; If we have a special attacking sound for the heavy
+
+    private float pressTime;
+    private float releaseTime;
+    private bool buttonPressed = false;  // To track if the button is currently being held down.
+    private bool isHeavyAttack = false;
+    private float time_until_heavy_hits = 0.6f;
+    private Coroutine holdMonitorCoroutine;
 
     bool attacking = false;
     bool readyToAttack = true;
     int attackCount;
 
-    public void Attack()
+    public void Attack(float holdDuration)
     {
-        if(!readyToAttack || attacking || Time.timeScale == 0f) return;
+        if (!readyToAttack || attacking || Time.timeScale == 0f) return;
 
-        if (!isSprinting) 
+        if (!isSprinting)
         {
             readyToAttack = false;
             attacking = true;
 
+            // Determine if the attack is heavy or normal
+            float finalDamage = attackDamage;
+            if (holdDuration >= holdUntilHeavyAttack) // Heavy attack condition
+            {
+                isHeavyAttack = true;
+                ChangeAnimationState(HEAVY_ATTACK);
+                Debug.Log("Heavy Attack! Double damage");
+                StartCoroutine(HeavyAttackSound(0.4f));
+                StartCoroutine(HeavyAttackDelay(finalDamage * 2, time_until_heavy_hits));
+            }
+            else
+            {
+                Debug.Log("Normal Attack");
+                isHeavyAttack = false;
+                audioSource.pitch = Random.Range(0.9f, 1.1f);
+                audioSource.PlayOneShot(swordSwing);
+                if (attackCount == 0)
+                {
+                    ChangeAnimationState(ATTACK1);
+                    attackCount++;
+                }
+                else if (attackCount == 1)
+                {
+                    ChangeAnimationState(ATTACK2);
+                    attackCount = 0;
+                }
+
+                // Set up normal attack with delay logic
+                StartCoroutine(DelayedAttack(finalDamage, attackDelay));
+            }
+
+            // Reset attack cooldown
             Invoke(nameof(ResetAttack), attackSpeed);
-            Invoke(nameof(AttackRaycast), attackDelay);
 
-            audioSource.pitch = Random.Range(0.9f, 1.1f);
-            audioSource.PlayOneShot(swordSwing);
-        }
-
-        if(attackCount == 0 && !isSprinting)
-        {
-            ChangeAnimationState(ATTACK1);
-            attackCount++;
-        }
-        else if (attackCount == 1 && !isSprinting)
-        {
-            ChangeAnimationState(ATTACK2);
-            attackCount = 0;
         }
     }
+
+    private IEnumerator DelayedAttack(float damage, float delay)
+    {
+        if (!isHeavyAttack) // Only delay normal attacks
+        {
+            yield return new WaitForSeconds(delay);
+            AttackRaycast(damage); // Perform the attack immediately for normal attacks
+        }
+    }
+
+    private IEnumerator HeavyAttackSound(float time_until_sound)
+    {
+        yield return new WaitForSeconds(time_until_sound); // Wait 0.4 seconds until high pitched sound is played
+        audioSource.pitch = 1.5f;
+        audioSource.PlayOneShot(swordSwing);
+
+    }
+
+    private IEnumerator HeavyAttackDelay(float damage, float delay)
+    {
+        yield return new WaitForSeconds(delay); // Wait for the specified delay (e.g., 0.12 seconds)
+        AttackRaycast(damage); // Perform the heavy attack
+    }
+
+    private IEnumerator MonitorHoldDuration()
+    {
+        yield return new WaitForSeconds(holdUntilHeavyAttack);
+
+        if (buttonPressed) // Only trigger if still holding the button
+        {
+            buttonPressed = false; // Simulate button release
+            releaseTime = Time.time; // Record release time
+            //Debug.Log("Auto-triggering heavy attack!");
+            Attack(holdUntilHeavyAttack); // Trigger the heavy attack
+        }
+    }
+
+
+
+    private void OnPress(InputAction.CallbackContext context)
+    {
+        if (context.performed && !buttonPressed) // Ensure it's triggered only once when the button is pressed
+        {
+            pressTime = Time.time; // Record the time when the button is pressed
+            buttonPressed = true; // Set the flag to true, indicating the button is pressed
+
+            // Start monitoring the hold duration
+            holdMonitorCoroutine = StartCoroutine(MonitorHoldDuration());
+        }
+    }
+
+    private void OnRelease(InputAction.CallbackContext context)
+    {
+        if (context.canceled && buttonPressed) // Ensure it's triggered only once when the button is released
+        {
+            if (holdMonitorCoroutine != null)
+            {
+                StopCoroutine(holdMonitorCoroutine); // Stop the hold monitor coroutine
+            }
+
+            releaseTime = Time.time; // Record the time the button is released
+            buttonPressed = false; // Reset the flag after releasing the button
+
+            // Calculate the hold duration
+            float holdDuration = releaseTime - pressTime;
+            //Debug.Log("Button held for: " + holdDuration + " seconds");
+
+            // Trigger the attack with the calculated hold duration
+            Attack(holdDuration);
+        }
+    }
+
+    // void TriggerAttack()  ---------Don't do anything with this code for now, let it stay!-----------
+    // {
+    //  if (attacking)
+    //  {
+    //     float damage = isHeavyAttack ? attackDamage * 2 : attackDamage;
+    //      AttackRaycast(damage);
+    //  }
+    // }  ---------Don't do anything with this code for now, let it stay!-----------
 
     void ResetAttack()
     {
@@ -343,16 +458,19 @@ public class PlayerController : MonoBehaviour
         readyToAttack = true;
     }
 
-    void AttackRaycast()
+    void AttackRaycast(float damage)
     {
-        //Debug.Log("Starting raycast");
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer) && !isSprinting)
-        { 
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer) && !isSprinting)
+        {
             Debug.Log(hit.collider.name);
             HitTarget(hit.point);
-            Vector3 knockbackForce = transform.forward * enemyThrowBackForce;
-            if(hit.transform.TryGetComponent<EnemyHitPoints>(out EnemyHitPoints T)) T.TakeDamage(attackDamage, knockbackForce);
 
+            // Apply damage and knockback
+            Vector3 knockbackForce = transform.forward * enemyThrowBackForce;
+            if (hit.transform.TryGetComponent<EnemyHitPoints>(out EnemyHitPoints enemy))
+            {
+                enemy.TakeDamage(damage, knockbackForce);
+            }
         }
     }
 
