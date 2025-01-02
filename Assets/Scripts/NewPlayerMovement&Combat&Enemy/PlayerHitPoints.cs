@@ -18,22 +18,28 @@ public class PlayerHitPoints : MonoBehaviour
     void Awake()
     {
         currentHitPoints = maxHitPoints;
-        updateHPonUI();
+        updateHitPointsUI();
     }
 
     public void TakeDamage(float damage)
     {
-        currentHitPoints -= damage;
-        updateHPonUI();
+        currentHitPoints -= damage - (damage * (GetComponent<AttributesSystem>().playerDamageResist / 100));
+        updateHitPointsUI();
         if (currentHitPoints <= 0) Death();
     }
+    public void changeMaxHp(float newMaxHP)
+    {
+        if (maxHitPoints == currentHitPoints) currentHitPoints = newMaxHP;
+        maxHitPoints = newMaxHP;
+        updateHitPointsUI();
+    }
 
-    private void updateHPonUI()
+    private void updateHitPointsUI()
     {
         if (maxHitPoints >= currentHitPoints) hpSlider.maxValue = maxHitPoints;
         else hpSlider.maxValue = currentHitPoints;
         hpSlider.value = currentHitPoints;
-        hpText.text = currentHitPoints + "/" + maxHitPoints;
+        hpText.text = MathF.Round(currentHitPoints, 0) + "/" + MathF.Round(maxHitPoints, 0);
     }
 
     void Death()
@@ -58,7 +64,7 @@ public class PlayerHitPoints : MonoBehaviour
             if(currentHitPoints >= maxHitPoints) return false;
             currentHitPoints = maxHitPoints;
         }
-        updateHPonUI();
+        updateHitPointsUI();
         return true;
     }
 }

@@ -2619,6 +2619,7 @@ GameObject:
   - component: {fileID: 262757656334924862}
   - component: {fileID: -955109473851097917}
   - component: {fileID: -3014436990890068741}
+  - component: {fileID: -8436880361309346488}
   m_Layer: 6
   m_Name: MeleeSkeletonWarrior
   m_TagString: Untagged
@@ -2933,6 +2934,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8436880361309346488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5044290252434347780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c2d3254c820374ba6a1323ba09fa7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxXPToGive: 25
+  minXPToGive: 15
 --- !u!1 &5194205844022925635
 GameObject:
   m_ObjectHideFlags: 0

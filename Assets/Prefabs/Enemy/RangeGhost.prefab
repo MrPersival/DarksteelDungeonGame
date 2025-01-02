@@ -1203,6 +1203,7 @@ GameObject:
   - component: {fileID: 5035978369638928402}
   - component: {fileID: 5077042977893040301}
   - component: {fileID: -6612239109035340905}
+  - component: {fileID: -2416986217359392254}
   m_Layer: 6
   m_Name: RangeGhost
   m_TagString: Untagged
@@ -1421,6 +1422,20 @@ MonoBehaviour:
   - chanseToDrop: 1
     itemToDrop: {fileID: 977223583593731182, guid: 86e5c531f864c274c9bf235d6e3b070a, type: 3}
   chanseToDrop: 30
+--- !u!114 &-2416986217359392254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2413745798541882187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c2d3254c820374ba6a1323ba09fa7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxXPToGive: 25
+  minXPToGive: 15
 --- !u!1 &2526525463856803275
 GameObject:
   m_ObjectHideFlags: 0

@@ -185,8 +185,17 @@ MonoBehaviour:
   price: 20
   amount: 1
   type: 0
-  subType: 4
+  subType: 5
   dropedObjectPrefab: {fileID: 3233172872831310601}
   isOneTimeUse: 0
   isEquipeble: 1
   additionalValue: 40
+  itemStats:
+  - attributeToChange: 5
+    value: 20
+    isProcent: 0
+    isAbsolute: 0
+  - attributeToChange: 1
+    value: 2
+    isProcent: 0
+    isAbsolute: 0

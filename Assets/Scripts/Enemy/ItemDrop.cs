@@ -15,11 +15,11 @@ public class ItemDrop : MonoBehaviour
         foreach (ItemsDrop item in items) weights.Add(item.chanseToDrop);
         int chosedItem = GetRandomWeightedIndex(weights.ToArray());
 
-        if (Random.Range(0, 100) < chanseToDrop) Instantiate(items[chosedItem].itemToDrop,
+        if (Random.Range(0, 100) * GameObject.FindGameObjectWithTag("Player").GetComponent<AttributesSystem>().playerLuckCoef < chanseToDrop) Instantiate(items[chosedItem].itemToDrop,
             transform.position + new Vector3(0, 1, 0), Quaternion.Euler(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f)));
     }
 
-    public int GetRandomWeightedIndex(float[] weights)
+    public int GetRandomWeightedIndex(float[] weights) //Code was taken from Stack Overwflow, black box for me for now
     {
         if (weights == null || weights.Length == 0) return -1;
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -24,6 +25,7 @@ public class UIController : MonoBehaviour
     GameObject textAdditionalInfoBG;
     [SerializeField]
     TextMeshProUGUI textAdditionalInfo;
+
     float oldTimeScale = 1.0f; //If we will change time scale, like, for exampel, slow time down, this will protect that.
     //TODO: Maybe rewrite this mess if more ui screens will be added.
 
@@ -150,4 +152,5 @@ public class UIController : MonoBehaviour
         winScreen.SetActive(true);
         setGamePause(true);
     }
+
 }

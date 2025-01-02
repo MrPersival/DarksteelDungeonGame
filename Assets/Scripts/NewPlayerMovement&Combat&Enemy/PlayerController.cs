@@ -52,12 +52,15 @@ public class PlayerController : MonoBehaviour
 
     float xRotation = 0f;
 
+    AttributesSystem attributesSystem;
+
     void Awake()
     {
         controller = GetComponent<CharacterController>();
         inventoryItemScript = GetComponent<InventoryItem>();
         animator = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
+        attributesSystem = GetComponent<AttributesSystem>();
 
 
         playerInput = new PlayerInput();
@@ -140,7 +143,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Determine the movement speed
-        float speed = isSprinting ? sprintSpeed : walkSpeed;
+        float speed = isSprinting ? attributesSystem.playerSprintSpeed : attributesSystem.playerMoveSpeed;
 
         // Apply gravity and move the player
         _PlayerVelocity.y += gravity * Time.deltaTime;
@@ -213,12 +216,12 @@ public class PlayerController : MonoBehaviour
         Vector3 initialPosition = transform.position;
 
         // Calculate the dodge target position
-        Vector3 targetPosition = initialPosition + direction * dodgeDistance;
+        Vector3 targetPosition = initialPosition + direction * attributesSystem.playerDodgeDistance;
 
         // Smoothly move towards the target over dodgeDuration
         while (elapsedTime < dodgeDuration)
         {
-            controller.Move(direction * (dodgeDistance / dodgeDuration) * Time.deltaTime);
+            controller.Move(direction * (attributesSystem.playerDodgeDistance / dodgeDuration) * Time.deltaTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -467,10 +470,8 @@ public class PlayerController : MonoBehaviour
 
             // Apply damage and knockback
             Vector3 knockbackForce = transform.forward * enemyThrowBackForce;
-            if (hit.transform.TryGetComponent<EnemyHitPoints>(out EnemyHitPoints enemy))
-            {
-                enemy.TakeDamage(damage, knockbackForce);
-            }
+            if(hit.transform.TryGetComponent<EnemyHitPoints>(out EnemyHitPoints T)) T.TakeDamage(attributesSystem.playerFinalDamage, knockbackForce);
+
         }
     }
 

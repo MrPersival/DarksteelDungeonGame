@@ -37,7 +37,7 @@ public class EnemyHitPoints : MonoBehaviour
 
 
     //Not working right now, sends enemy to flight
-    IEnumerator knockBack(Vector3 knockBackForce)
+    /* IEnumerator knockBack(Vector3 knockBackForce)
     {
         yield return null;
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
@@ -57,13 +57,14 @@ public class EnemyHitPoints : MonoBehaviour
         rigidbody.isKinematic = true;
         agent.Warp(transform.position);
         agent.enabled = true;
-    }
+    } */
 
     void Death()
     {
         GameObject deathParticle = Instantiate(deathEffect, transform.position, deathEffect.transform.rotation);
         //deathEffect.transform.position = transform.position;
         if (gameObject.TryGetComponent<ItemDrop>(out ItemDrop itemDrop)) itemDrop.dropItem();
+        if (gameObject.TryGetComponent<XPDrop>(out XPDrop xPDrop)) xPDrop.giveXP();
         Destroy(deathParticle, 20f);
         // TEMPORARY: Destroy Object
         Destroy(gameObject, 0.25f);

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static InventoryItem;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -190,47 +191,63 @@ public class InventoryUI : MonoBehaviour
                 equipebleItemClicked(equippableItem);
                 upadeteInvenoty(items);
             });
+            itemPrefab.transform.Find("MainStat").GetComponent<TextMeshProUGUI>().text = equippableItem.itemStats[0].attributeToChange.ToString() + ": " + equippableItem.itemStats[0].value.ToString();
+            string toolTipText = "";
+            foreach (EquipebleItemStat stat in equippableItem.itemStats)
+            {
+                if(stat.isProcent) toolTipText += $"{stat.attributeToChange.ToString()}: {stat.value}%";
+                else if(stat.isAbsolute) toolTipText += $"{stat.attributeToChange.ToString()}: {stat.value} absolute change";
+                else toolTipText += $"{stat.attributeToChange.ToString()}: {stat.value}";
+                toolTipText += "\n";
+            }
+            itemPrefab.GetComponent<ItemTooltipOnHoover>().textToDisplay = toolTipText;
         }
         else if(item is UsebleItem)
         {
             UsebleItem usebleItem = item as UsebleItem;
             itemPrefab.GetComponent<Button>().onClick.AddListener(() => { usebleItem.useItem(); });
+            itemPrefab.transform.Find("MainStat").GetComponent<TextMeshProUGUI>().text = "HP: " + usebleItem.additionalValue.ToString(); //Make it support all potions
         }
     }
 
     private void equipebleItemClicked(EquippableItem equippableItem)
     {
+        if (equippableItem.isEquiped) return;
+        //TODO: Potentially change to slot system with list of structs for each slot
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         PlayerInventory inv = player.GetComponent<PlayerInventory>();
-        PlayerController controller = player.GetComponent<PlayerController>();
         equippableItem.isEquiped = true;
         if (equippableItem.type == InventoryItem.ItemsType.Weapon)
         {
             if(inv.equippedWeapon != null) inv.equippedWeapon.isEquiped = false;
             inv.equippedWeapon = equippableItem;
-            controller.attackDamage = equippableItem.additionalValue;
-            //Change model in player hands. Will be added later, when weapons in game will be changed.
+            //controller.attackDamage = equippableItem.additionalValue;
         }
         else
         {
             switch (equippableItem.subType)
             { //Actual changes to armor will be implimentet later, when working stats and armor system will be added.
                 case InventoryItem.ItemsSubtype.Chestwear:
-                    if (inv.equippedWeapon != null) inv.equippedHelmet.isEquiped = false;
-                    inv.equippedHelmet = equippableItem;
-                    break;
-                case InventoryItem.ItemsSubtype.Legwear:
-                    if (inv.equippedWeapon != null) inv.equippedChestwear.isEquiped = false;
+                    if (inv.equippedChestwear != null) inv.equippedChestwear.isEquiped = false;
                     inv.equippedChestwear = equippableItem;
                     break;
-                case InventoryItem.ItemsSubtype.Helmet:
-                    if (inv.equippedWeapon != null) inv.equippedLegwear.isEquiped = false;
+                case InventoryItem.ItemsSubtype.Legwear:
+                    if (inv.equippedLegwear != null) inv.equippedLegwear.isEquiped = false;
                     inv.equippedLegwear = equippableItem;
+                    break;
+                case InventoryItem.ItemsSubtype.Helmet:
+                    if (inv.equippedHelmet != null) inv.equippedHelmet.isEquiped = false;
+                    inv.equippedHelmet = equippableItem;
+                    break;
+                case InventoryItem.ItemsSubtype.Charm:
+                    if(inv.equippedCharm != null) inv.equippedCharm.isEquiped = false;
+                    inv.equippedCharm = equippableItem;
                     break;
                 default:
                     Debug.LogWarning($"Something gone wrong, item {equippableItem.name} has unknown subtype {equippableItem.subType}");
                     break;
             }
         }
+        GameObject.FindGameObjectWithTag("Player").GetComponent<AttributesSystem>().updateAttributes();
     }
 }
