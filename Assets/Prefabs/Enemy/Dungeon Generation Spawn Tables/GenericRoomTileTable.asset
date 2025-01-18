@@ -21,7 +21,7 @@ MonoBehaviour:
     isEnterRoomFrendly: 0
     rotationOffset: 180
     isRequiesWall: 0
-    wallOfset: {x: 0, y: 0, z: 0}
+    offset: {x: 0, y: 0.3, z: 0}
   - chanseToSpawn: 1
     itemToSpawn: {fileID: 9219301023125622440, guid: ccba2f2759c69e74f906a2d58d1b2f07, type: 3}
     isDungeonGenerationPreset: 1
@@ -30,7 +30,7 @@ MonoBehaviour:
     isEnterRoomFrendly: 1
     rotationOffset: 0
     isRequiesWall: 0
-    wallOfset: {x: 0, y: 0, z: 0}
+    offset: {x: 0, y: 4.8, z: 0}
   - chanseToSpawn: 1
     itemToSpawn: {fileID: 976413757324913665, guid: cda39344f7771a34089756999e769f4a, type: 3}
     isDungeonGenerationPreset: 1
@@ -39,16 +39,7 @@ MonoBehaviour:
     isEnterRoomFrendly: 1
     rotationOffset: 90
     isRequiesWall: 1
-    wallOfset: {x: 0, y: 4.3, z: 0.2}
-  - chanseToSpawn: 1
-    itemToSpawn: {fileID: 8703415154165009447, guid: cfe979cca1d98d243a2663146a8dc610, type: 3}
-    isDungeonGenerationPreset: 1
-    minDistanceToSameObj: 30
-    isHallwayFrendly: 1
-    isEnterRoomFrendly: 1
-    rotationOffset: 0
-    isRequiesWall: 0
-    wallOfset: {x: 0, y: 0, z: 0}
+    offset: {x: 0, y: 4.2, z: 0.3}
   - chanseToSpawn: 1
     itemToSpawn: {fileID: 5797803205122736088, guid: 648b5b9d682906544adb17e8eb1a1d0c, type: 3}
     isDungeonGenerationPreset: 1
@@ -57,7 +48,7 @@ MonoBehaviour:
     isEnterRoomFrendly: 1
     rotationOffset: 180
     isRequiesWall: 1
-    wallOfset: {x: 1, y: 0.5, z: 0}
+    offset: {x: 1, y: 0.3, z: 0}
   - chanseToSpawn: 1
     itemToSpawn: {fileID: 3806271031598273184, guid: 649598691822a3a42a3062b8deb6832b, type: 3}
     isDungeonGenerationPreset: 1
@@ -66,7 +57,7 @@ MonoBehaviour:
     isEnterRoomFrendly: 1
     rotationOffset: 180
     isRequiesWall: 1
-    wallOfset: {x: 1, y: 0.5, z: 0}
+    offset: {x: 1, y: 0.3, z: 0}
   - chanseToSpawn: 1
     itemToSpawn: {fileID: 6404211664223802509, guid: 58cbfb3580d463148b362ac0af61a7db, type: 3}
     isDungeonGenerationPreset: 1
@@ -75,5 +66,41 @@ MonoBehaviour:
     isEnterRoomFrendly: 1
     rotationOffset: 180
     isRequiesWall: 1
-    wallOfset: {x: 0.3, y: 3, z: 0}
+    offset: {x: 0.3, y: 2.5, z: 0}
+  - chanseToSpawn: 1
+    itemToSpawn: {fileID: 2660882893003246789, guid: 33c1105a06c37c043a0594402a504415, type: 3}
+    isDungeonGenerationPreset: 1
+    minDistanceToSameObj: 25
+    isHallwayFrendly: 0
+    isEnterRoomFrendly: 0
+    rotationOffset: 0
+    isRequiesWall: 0
+    offset: {x: 0, y: 0, z: 0}
+  - chanseToSpawn: 1
+    itemToSpawn: {fileID: 3871256125065875930, guid: a418525a9b5bc464fa60055fa68e00bb, type: 3}
+    isDungeonGenerationPreset: 1
+    minDistanceToSameObj: 25
+    isHallwayFrendly: 0
+    isEnterRoomFrendly: 0
+    rotationOffset: 0
+    isRequiesWall: 0
+    offset: {x: 0, y: 0, z: 0}
+  - chanseToSpawn: 2
+    itemToSpawn: {fileID: 5044290252434347780, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
+    isDungeonGenerationPreset: 1
+    minDistanceToSameObj: 25
+    isHallwayFrendly: 0
+    isEnterRoomFrendly: 0
+    rotationOffset: 0
+    isRequiesWall: 0
+    offset: {x: 0, y: 0, z: 0}
+  - chanseToSpawn: 2
+    itemToSpawn: {fileID: 2413745798541882187, guid: c8397525dac618e408d642c3482240c0, type: 3}
+    isDungeonGenerationPreset: 1
+    minDistanceToSameObj: 25
+    isHallwayFrendly: 0
+    isEnterRoomFrendly: 0
+    rotationOffset: 0
+    isRequiesWall: 0
+    offset: {x: 0, y: 0, z: 0}
   chanseToSpawn: 70

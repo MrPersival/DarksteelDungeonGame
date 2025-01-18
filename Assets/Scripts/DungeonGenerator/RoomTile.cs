@@ -79,17 +79,17 @@ public class RoomTile : MonoBehaviour
                 if (chosedObjToSpawn.itemToSpawn == null) return;
                 spawnedObject = Instantiate(chosedObjToSpawn.itemToSpawn, chosedWall.transform.position, chosedWall.transform.rotation, chosedWall.transform);
                 spawnedObject.transform.Rotate(new Vector3(0, chosedObjToSpawn.rotationOffset, 0));
-                spawnedObject.transform.position = spawnedObject.transform.position + spawnedObject.transform.forward * chosedObjToSpawn.wallOfset.x;
-                spawnedObject.transform.localPosition = spawnedObject.transform.localPosition + spawnedObject.transform.up * chosedObjToSpawn.wallOfset.y;
-                spawnedObject.transform.position = spawnedObject.transform.position + spawnedObject.transform.right * chosedObjToSpawn.wallOfset.z;
+                spawnedObject.transform.position = spawnedObject.transform.position + spawnedObject.transform.forward * chosedObjToSpawn.offset.x;
+                spawnedObject.transform.localPosition = spawnedObject.transform.localPosition + spawnedObject.transform.up * chosedObjToSpawn.offset.y;
+                spawnedObject.transform.position = spawnedObject.transform.position + spawnedObject.transform.right * chosedObjToSpawn.offset.z;
 
             }
             else if (walls.Count <= 0)
             {
                 for (int i = legitItemsToSpawn.Count - 1; i >= 0; i--) if (legitItemsToSpawn[i].isRequiesWall) legitItemsToSpawn.RemoveAt(i);
-                if (chosedObjToSpawn.itemToSpawn == null) return;
                 chosedObjToSpawn = generationPresets.getItemToSpawn(legitItemsToSpawn);
-                spawnedObject = Instantiate(chosedObjToSpawn.itemToSpawn, transform.position, transform.rotation, transform);
+                if (chosedObjToSpawn.itemToSpawn == null) return;
+                spawnedObject = Instantiate(chosedObjToSpawn.itemToSpawn, transform.position + chosedObjToSpawn.offset, transform.rotation, transform);
                 spawnedObject.transform.Rotate(new Vector3(0, chosedObjToSpawn.rotationOffset, 0));
             }
         }

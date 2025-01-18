@@ -76,7 +76,7 @@ public struct SpawnTableItem
     public float rotationOffset;
     [ConditionalField("isDungeonGenerationPreset")]
     public bool isRequiesWall;
-    [ConditionalField("isRequiesWall")]
-    public Vector3 wallOfset;
+    [ConditionalField("isDungeonGenerationPreset")]
+    public Vector3 offset;
 
 }
