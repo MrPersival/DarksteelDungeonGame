@@ -2308,7 +2308,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.6537, y: -0.207, z: 0.51644}
-  m_LocalScale: {x: 0.14703536, y: 1.7425, z: 0.24892855}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4858288496567368384}
@@ -2513,14 +2513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf5c80dfc9ec0945bd96bf702d962e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - chanseToDrop: 10
-    itemToDrop: {fileID: 8058177010834940280, guid: d8319b760ce97f246a9e61203a6b3789, type: 3}
-  - chanseToDrop: 5
-    itemToDrop: {fileID: 3233172872831310601, guid: 1553cfd75d3b11f49a0f4d18bc29ec3d, type: 3}
-  - chanseToDrop: 3
-    itemToDrop: {fileID: 977223583593731182, guid: 86e5c531f864c274c9bf235d6e3b070a, type: 3}
-  chanseToDrop: 100
+  dropSpawnTable: {fileID: 11400000, guid: b0b73e40c2343044c8956a98884f1531, type: 2}
 --- !u!114 &6329935523271724280
 MonoBehaviour:
   m_ObjectHideFlags: 0

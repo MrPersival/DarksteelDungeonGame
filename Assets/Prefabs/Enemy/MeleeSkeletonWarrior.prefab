@@ -2830,14 +2830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf5c80dfc9ec0945bd96bf702d962e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - chanseToDrop: 6
-    itemToDrop: {fileID: 8058177010834940280, guid: d8319b760ce97f246a9e61203a6b3789, type: 3}
-  - chanseToDrop: 3
-    itemToDrop: {fileID: 3233172872831310601, guid: 1553cfd75d3b11f49a0f4d18bc29ec3d, type: 3}
-  - chanseToDrop: 1
-    itemToDrop: {fileID: 977223583593731182, guid: 86e5c531f864c274c9bf235d6e3b070a, type: 3}
-  chanseToDrop: 25
+  dropSpawnTable: {fileID: 11400000, guid: abd71df1cd01d40478f179052bcca0c4, type: 2}
 --- !u!82 &-3014436990890068741
 AudioSource:
   m_ObjectHideFlags: 0

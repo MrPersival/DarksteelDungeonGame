@@ -13,6 +13,10 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: -955109473851097917, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
+      propertyPath: dropSpawnTable
+      value: 
+      objectReference: {fileID: 11400000, guid: abd71df1cd01d40478f179052bcca0c4, type: 2}
+    - target: {fileID: -955109473851097917, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
       propertyPath: items.Array.size
       value: 3
       objectReference: {fileID: 0}
