@@ -6506,7 +6506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0763b230d22fd334bbc9441aed267b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossLevelNumber: 3
+  bossLevelNumber: 1
   size: {x: 30, y: 30}
   roomCount: 40
   roomMaxSize: {x: 6, y: 6}
@@ -16393,6 +16393,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 4e349dc959014a845b9aa317d1c2b7f0, type: 3}
     - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 7635435194376255152}
+    - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: levelUpSound
+      value: 
+      objectReference: {fileID: 8300000, guid: bd720f05cd71c2a448b834e9e01a8c39, type: 3}
+    - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: pickUpItemSound
+      value: 
+      objectReference: {fileID: 8300000, guid: bda184343ef0369468a77f782dbd671a, type: 3}
+    - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: drinkPotionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2b1697c4933d22945a4b40d8a4b456f4, type: 3}
+    - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
       propertyPath: holdUntilHeavyAttack
       value: 2.5
       objectReference: {fileID: 0}
@@ -18497,6 +18513,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d40a94725b8dcff449d47815d6a1cca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &7635435194376255152 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4844886992938371795, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+  m_PrefabInstance: {fileID: 5983519268469660356}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7635540848541394159
 MonoBehaviour:
   m_ObjectHideFlags: 0

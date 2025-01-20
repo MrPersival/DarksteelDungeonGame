@@ -59,6 +59,7 @@ public class PlayerInteract : MonoBehaviour
                 // Handle interaction
                 if (playerController.input.Interact.triggered)
                 {
+                    playerController.audioSource.PlayOneShot(playerController.pickUpItemSound);
                     interactable.BaseInteract();
                 }
             }

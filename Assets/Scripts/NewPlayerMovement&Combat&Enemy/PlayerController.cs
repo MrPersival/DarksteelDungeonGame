@@ -14,10 +14,13 @@ public class PlayerController : MonoBehaviour
     private InventoryItem inventoryItemScript;
     Animator animator;
 
-    AudioSource audioSource;
+    public AudioSource audioSource;
 
     [Header("SFX")]
     public AudioClip dodgeSound;
+    public AudioClip drinkPotionSound;
+    public AudioClip pickUpItemSound;
+    public AudioClip levelUpSound;
 
     [Header("Controller")]
     public float walkSpeed = 5;

@@ -41,10 +41,12 @@ public class ChangeWeapon : MonoBehaviour
         if (playerControllerScript != null && playerControllerScript.attackDamage == 40f)
         {
             EquipWeapon(1); // Equip second weapon
+            //Add an equip sound
         }
         else if (playerControllerScript != null && playerControllerScript.attackDamage == 65f)
         {
             EquipWeapon(2); // Equip second weapon
+            //Add an equip sound
         }
     }
 

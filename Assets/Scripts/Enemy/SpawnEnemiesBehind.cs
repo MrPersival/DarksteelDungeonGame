@@ -7,6 +7,13 @@ public class SpawnEnemiesBehind : MonoBehaviour
     public List<GameObject> enemiesToSpawn = new List<GameObject>();
     public float delayBetweenSpawning = 2f;
     public GameObject spawnerEffect;
+    public AudioClip summonSFX;
+    AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
 
     public void spawnEnemies()
@@ -14,6 +21,7 @@ public class SpawnEnemiesBehind : MonoBehaviour
         GetComponent<Animator>().SetBool("isSpawningEnemies", true);
         Vector3 positionToSpawn = transform.position + Vector3.back * 2;
         GameObject spawner =  Instantiate(spawnerEffect, positionToSpawn, Quaternion.identity);
+        audioSource.PlayOneShot(summonSFX);
         float delay = delayBetweenSpawning;
         foreach (GameObject enemy in enemiesToSpawn)
         {

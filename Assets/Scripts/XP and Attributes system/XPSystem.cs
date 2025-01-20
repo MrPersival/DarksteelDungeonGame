@@ -18,6 +18,8 @@ public class XPSystem : MonoBehaviour
     [SerializeField]
     Slider xpSlider;
 
+    PlayerController playerControllerScript;
+
     public int attributesPoints = 0;
     public int playerLevel = 1;
 
@@ -26,6 +28,7 @@ public class XPSystem : MonoBehaviour
     private void Start()
     {
         updateUI();
+        playerControllerScript = GetComponent<PlayerController>();
     }
 
     public void addXP(float xpToAdd)
@@ -37,6 +40,7 @@ public class XPSystem : MonoBehaviour
             attributesPoints += attributesPointsPerLevel;
             playerLevel += 1;
             GetComponent<AttributesSystem>().updateAttributes();
+            playerControllerScript.audioSource.PlayOneShot(playerControllerScript.levelUpSound);
         }
         updateUI();
     }
