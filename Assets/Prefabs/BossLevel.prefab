@@ -5428,6 +5428,10 @@ PrefabInstance:
       propertyPath: objectToDeleteOnDeath
       value: 
       objectReference: {fileID: 3804853810465439989}
+    - target: {fileID: 770267561289253512, guid: 48d8df799ae1b3b43af0949e37bd1e95, type: 3}
+      propertyPath: dropSpawnTable
+      value: 
+      objectReference: {fileID: 11400000, guid: ed5f7968933151d4ab454aacf764391b, type: 2}
     - target: {fileID: 4471693965225699663, guid: 48d8df799ae1b3b43af0949e37bd1e95, type: 3}
       propertyPath: m_Name
       value: Boss

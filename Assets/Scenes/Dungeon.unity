@@ -6506,10 +6506,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0763b230d22fd334bbc9441aed267b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossLevelNumber: 1
-  size: {x: 30, y: 30}
+  bossLevelNumber: 3
+  size: {x: 60, y: 60}
   roomCount: 40
-  roomMaxSize: {x: 6, y: 6}
+  roomMaxSize: {x: 7, y: 7}
   roomTilePrefab: {fileID: 4680844501690820339, guid: ab8bfc3bf5d1b2c4ba07dcf1b921d68d, type: 3}
   enterPointTilePrefab: {fileID: 7671149689941988742, guid: 1fe41f12b3d62424f80696ba0963f66d, type: 3}
   exitPointPrefab: {fileID: 2772244971925173572, guid: ddac6ddc4ef22d049a863b318e3b9970, type: 3}
