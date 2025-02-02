@@ -7,8 +7,7 @@ using UnityEngine.UI;
 
 public class XPSystem : MonoBehaviour
 {
-    [SerializeField]
-    float xpToLevelUp = 100f;
+    public float xpToLevelUp = 100f;
     [SerializeField]
     int attributesPointsPerLevel = 1;
     [SerializeField]
@@ -22,8 +21,7 @@ public class XPSystem : MonoBehaviour
 
     public int attributesPoints = 0;
     public int playerLevel = 1;
-
-    float xp = 0f;
+    public float xp { get; private set; } = 0f;
 
     private void Start()
     {
