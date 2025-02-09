@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -99,6 +100,22 @@ public class PlayerController : MonoBehaviour
             //isTeleporting = true; // Set teleport flag
             enterPoint = GameObject.Find("EnterPoint(Clone)");
             teleport(enterPoint.transform.position);
+        }
+
+        if(Input.GetMouseButton(0))
+        {
+            holdingLMBSeconds += Time.deltaTime;
+            if(holdingLMBSeconds > 0.5)
+            {
+                heavyAttackIndicatorSlider.gameObject.SetActive(true);
+                heavyAttackIndicatorSlider.value = holdingLMBSeconds;
+                heavyAttackIndicatorSlider.maxValue = holdUntilHeavyAttack;
+            }
+        }
+        if(Input.GetMouseButtonUp(0) || isHeavyAttack)
+        {
+            holdingLMBSeconds = 0;
+            heavyAttackIndicatorSlider.gameObject.SetActive(false);
         }
     }
 
@@ -320,6 +337,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip swordSwing;
     public AudioClip hitSound;
     //public AudioClip heavySound; If we have a special attacking sound for the heavy
+    public Slider heavyAttackIndicatorSlider;
 
     private float pressTime;
     private float releaseTime;
@@ -327,6 +345,7 @@ public class PlayerController : MonoBehaviour
     private bool isHeavyAttack = false;
     private float time_until_heavy_hits = 0.6f;
     private Coroutine holdMonitorCoroutine;
+    private float holdingLMBSeconds;
 
     bool attacking = false;
     bool readyToAttack = true;
