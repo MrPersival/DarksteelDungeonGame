@@ -1950,7 +1950,6 @@ Transform:
   - {fileID: 1842553511}
   - {fileID: 1277078728}
   - {fileID: 1504877429}
-  - {fileID: 669679916}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &598289010
@@ -2437,37 +2436,6 @@ Transform:
   - {fileID: 837364061}
   - {fileID: 308396642}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &669679915
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 669679916}
-  m_Layer: 0
-  m_Name: SettingsMenuHolder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &669679916
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 669679915}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 598178652}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &698567987
 GameObject:
@@ -10981,7 +10949,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1458423556504753441
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12677,7 +12645,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2651094071953747425
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17178,6 +17146,14 @@ PrefabInstance:
       propertyPath: unspendAP
       value: 
       objectReference: {fileID: 434961592}
+    - target: {fileID: 8650394115944829756, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: acceptButton
+      value: 
+      objectReference: {fileID: 7709974600743171505}
+    - target: {fileID: 8650394115944829756, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: cancelButton
+      value: 
+      objectReference: {fileID: 9055501036683586331}
     - target: {fileID: 8650394115944829756, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
       propertyPath: luckUIElement
       value: 

@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.UI;
 using static InventoryItem;
 
 public class AttributesSystem : MonoBehaviour
@@ -22,6 +23,10 @@ public class AttributesSystem : MonoBehaviour
     TextMeshProUGUI unspendAP;
     [SerializeField]
     TextMeshProUGUI infoText;
+    [SerializeField]
+    Button acceptButton;
+    [SerializeField]
+    Button cancelButton;
 
     public float playerDamageResist { get; private set; }
     public float playerFinalDamage { get; private set; }
@@ -169,8 +174,9 @@ public class AttributesSystem : MonoBehaviour
                 attributeChange.GetComponent<TextMeshProUGUI>().text = "+ " + (temporaryLuckValue - luck.baseValue);
                 break;
         }
-
-        if(playerXPSystem.attributesPoints <= 0) foreach(Transform item in abilitiesUIElements) item.Find("AddOneXP").gameObject.SetActive(false);
+        acceptButton.gameObject.SetActive(true);
+        cancelButton.gameObject.SetActive(true);
+        if (playerXPSystem.attributesPoints <= 0) foreach(Transform item in abilitiesUIElements) item.Find("AddOneXP").gameObject.SetActive(false);
     }
 
     public void acceptButtonPressed()
@@ -180,12 +186,16 @@ public class AttributesSystem : MonoBehaviour
         charisma.baseValue = temporaryCharismaValue;
         intelligence.baseValue = temporaryIntelligenceValue;
         luck.baseValue = temporaryLuckValue;
+        acceptButton.gameObject.SetActive(false);
+        cancelButton.gameObject.SetActive(false);
         updateAttributes();
     }
 
     public void cancelButtonPressed()
     {
         playerXPSystem.changeAPValue(oldAPValue);
+        acceptButton.gameObject.SetActive(false);
+        cancelButton.gameObject.SetActive(false);
         updateAttributes();
     }
 
