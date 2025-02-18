@@ -13,6 +13,7 @@ public class PlayerHitPoints : MonoBehaviour
     public UnityEngine.UI.Slider hpSlider;
     public TMP_Text hpText;
     public GameObject gameOverScreen;
+    public bool isDead = false;
     float currentHitPoints;
 
     void Awake()
@@ -49,6 +50,7 @@ public class PlayerHitPoints : MonoBehaviour
         UnityEngine.Cursor.visible = true;
         UnityEngine.Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0f;
+        isDead = true;
         gameOverScreen.SetActive(true);
         
     }
