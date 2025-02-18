@@ -8,6 +8,8 @@ using static InventoryItem;
 
 public class InventoryUI : MonoBehaviour
 {
+    public GameObject player;
+
     public GameObject itemUiPrefab;
 
     public TMP_Dropdown selectionDropdown;
@@ -221,6 +223,7 @@ public class InventoryUI : MonoBehaviour
         {
             if(inv.equippedWeapon != null) inv.equippedWeapon.isEquiped = false;
             inv.equippedWeapon = equippableItem;
+            player.GetComponent<ChangeWeapon>().EquipWeapon(equippableItem.mesh, equippableItem.materials);
             //controller.attackDamage = equippableItem.additionalValue;
         }
         else

@@ -71,6 +71,8 @@ public class PlayerInventory : MonoBehaviour
             itemToAdd = ScriptableObject.CreateInstance<EquippableItem>();
             EquippableItem equipebleItem = itemToAdd as EquippableItem;
             equipebleItem.itemStats = item.itemStats;
+            equipebleItem.mesh = item.dropedObjectPrefab.GetComponent<MeshFilter>().sharedMesh;
+            equipebleItem.materials = item.dropedObjectPrefab.GetComponent<MeshRenderer>().sharedMaterials;
         } 
 
 

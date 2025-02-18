@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3459823795667407163}
   - component: {fileID: 3715020037977740373}
   m_Layer: 7
-  m_Name: Strong sword
+  m_Name: Steel Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220577b967089aa42b3563129026f022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Test imba sword
+  itemName: Steel axe
   price: 20
   amount: 1
   type: 0
