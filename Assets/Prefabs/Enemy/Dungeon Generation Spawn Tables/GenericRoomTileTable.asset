@@ -103,4 +103,13 @@ MonoBehaviour:
     rotationOffset: 0
     isRequiesWall: 0
     offset: {x: 0, y: 0, z: 0}
+  - chanseToSpawn: 2
+    itemToSpawn: {fileID: 4662047562669187360, guid: b93f933768489284bab6d531a97966f3, type: 3}
+    isDungeonGenerationPreset: 1
+    minDistanceToSameObj: 25
+    isHallwayFrendly: 1
+    isEnterRoomFrendly: 1
+    rotationOffset: 0
+    isRequiesWall: 0
+    offset: {x: 0, y: 1.012, z: 0}
   chanseToSpawn: 70

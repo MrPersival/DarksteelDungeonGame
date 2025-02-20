@@ -22,7 +22,7 @@ public class EnemyHitPoints : MonoBehaviour
     }
     public void TakeDamage(float damage, Vector3 knockBackForce)
     {
-        if(!GetComponent<Animator>().GetBool("isHit")) GetComponent<Animator>().SetBool("isHit", true);
+        if(TryGetComponent<Animator>(out Animator animator)) if (!animator.GetBool("isHit")) animator.SetBool("isHit", true);
         //Debug.Log("Dealing damage");
         currentHitPoints -= damage;
         if(currentHitPoints <= 0) Death();
