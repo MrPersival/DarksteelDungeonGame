@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerInput playerInput;
     public PlayerInput.MainActions input;
+    public PlayerTutorial playerTutorial;
 
     CharacterController controller;
     private InventoryItem inventoryItemScript;
@@ -143,10 +144,12 @@ public class PlayerController : MonoBehaviour
 
         // Calculate the movement direction
         Vector3 moveDirection = new Vector3(input.x, 0, input.y);
+        if (moveDirection != Vector3.zero) playerTutorial.playerMoved();
 
         // Check if sprinting conditions are met
         if (isSprintButtonPressed)
         {
+            playerTutorial.playerSprintet();
             // Allow sprinting when moving forward or diagonally forward
             if (input.y > 0 && input.magnitude >= 0.5f) // Magnitude check allows diagonal movement
             {
@@ -164,6 +167,7 @@ public class PlayerController : MonoBehaviour
 
         // Determine the movement speed
         float speed = isSprinting ? attributesSystem.playerSprintSpeed : attributesSystem.playerMoveSpeed;
+
 
         // Apply gravity and move the player
         _PlayerVelocity.y += gravity * Time.deltaTime;
@@ -207,6 +211,7 @@ public class PlayerController : MonoBehaviour
 
     void Dodge()
     {
+
         if (!canDodge || isDodging) return;
 
         Vector2 moveInput = input.Movement.ReadValue<Vector2>();
@@ -217,7 +222,7 @@ public class PlayerController : MonoBehaviour
             // Determine the dodge direction
             Vector3 dodgeDirection = new Vector3(moveInput.x, 0, moveInput.y).normalized;
             dodgeDirection = transform.TransformDirection(dodgeDirection);
-
+            playerTutorial.playerDodged();
             // Start the dodge
             StartCoroutine(PerformDodge(dodgeDirection));
             audioSource.PlayOneShot(dodgeSound);
@@ -364,6 +369,7 @@ public class PlayerController : MonoBehaviour
             float finalDamage = attackDamage;
             if (holdDuration >= holdUntilHeavyAttack) // Heavy attack condition
             {
+                playerTutorial.playerHeavyAttacked();
                 isHeavyAttack = true;
                 ChangeAnimationState(HEAVY_ATTACK);
                 Debug.Log("Heavy Attack! Double damage");
@@ -372,6 +378,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                playerTutorial.playerAttacked();
                 Debug.Log("Normal Attack");
                 isHeavyAttack = false;
                 audioSource.pitch = Random.Range(0.9f, 1.1f);

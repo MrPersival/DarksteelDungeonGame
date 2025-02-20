@@ -25,6 +25,8 @@ public class UIController : MonoBehaviour
     GameObject textAdditionalInfoBG;
     [SerializeField]
     TextMeshProUGUI textAdditionalInfo;
+    [SerializeField]
+    PlayerTutorial playerTutorial;
 
     float oldTimeScale = 1.0f; //If we will change time scale, like, for exampel, slow time down, this will protect that.
     //TODO: Maybe rewrite this mess if more ui screens will be added.
@@ -78,6 +80,7 @@ public class UIController : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.I) && !pauseMenu.activeSelf && !settingsMenu.activeSelf)
         {
+            playerTutorial.playerOpenedInventory();
             inventoryAndStatsScreen.SetActive(true);
             setCursorVisibility(true);
             setGamePause(true);
