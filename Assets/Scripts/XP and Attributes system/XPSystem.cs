@@ -16,6 +16,8 @@ public class XPSystem : MonoBehaviour
     TextMeshProUGUI unspendXPPoints;
     [SerializeField]
     Slider xpSlider;
+    [SerializeField]
+    SliderSmoothnes sliderSmoothnes;
 
     PlayerController playerControllerScript;
 
@@ -53,7 +55,7 @@ public class XPSystem : MonoBehaviour
             unspendXPPoints.text = Convert.ToString(attributesPoints);
         }
         xpSlider.maxValue = xpToLevelUp;
-        xpSlider.value = xp;
+        sliderSmoothnes.target = xp;
     }
 
     public bool changeAPValue(int value)

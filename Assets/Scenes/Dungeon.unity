@@ -1605,6 +1605,7 @@ GameObject:
   - component: {fileID: 532926512}
   - component: {fileID: 532926511}
   - component: {fileID: 532926510}
+  - component: {fileID: 532926513}
   m_Layer: 5
   m_Name: HPValueBG
   m_TagString: Untagged
@@ -1677,9 +1678,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0.75
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1721,6 +1722,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532926508}
   m_CullTransparentMesh: 1
+--- !u!114 &532926513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532926508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 215663635e77a7e45bfb53cf0f49619c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothTime: 0.5
+  smoothVelocity: 0
+  target: 0
 --- !u!1 &550679922
 GameObject:
   m_ObjectHideFlags: 0
@@ -5013,6 +5029,7 @@ GameObject:
   - component: {fileID: 1068812553}
   - component: {fileID: 1068812552}
   - component: {fileID: 1068812551}
+  - component: {fileID: 1068812554}
   m_Layer: 5
   m_Name: XPValueBG
   m_TagString: Untagged
@@ -5085,9 +5102,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0.75
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5129,6 +5146,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068812549}
   m_CullTransparentMesh: 1
+--- !u!114 &1068812554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068812549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 215663635e77a7e45bfb53cf0f49619c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothTime: 0.75
+  smoothVelocity: 0
+  target: 0
 --- !u!1 &1071804586
 GameObject:
   m_ObjectHideFlags: 0
@@ -17877,6 +17909,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1068812551}
     - target: {fileID: 6682299769010383609, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: sliderSmoothnes
+      value: 
+      objectReference: {fileID: 1068812554}
+    - target: {fileID: 6682299769010383609, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
       propertyPath: unspendXPPoints
       value: 
       objectReference: {fileID: 1469661492}
@@ -17952,6 +17988,10 @@ PrefabInstance:
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 1047094448}
+    - target: {fileID: 8092165820118473450, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: sliderSmoothnes
+      value: 
+      objectReference: {fileID: 532926513}
     - target: {fileID: 8137328188512360364, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 

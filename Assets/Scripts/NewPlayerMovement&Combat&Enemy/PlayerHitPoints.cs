@@ -15,6 +15,8 @@ public class PlayerHitPoints : MonoBehaviour
     public GameObject gameOverScreen;
     public bool isDead = false;
     float currentHitPoints;
+    [SerializeField]
+    SliderSmoothnes sliderSmoothnes;
 
     void Awake()
     {
@@ -39,7 +41,7 @@ public class PlayerHitPoints : MonoBehaviour
     {
         if (maxHitPoints >= currentHitPoints) hpSlider.maxValue = maxHitPoints;
         else hpSlider.maxValue = currentHitPoints;
-        hpSlider.value = currentHitPoints;
+        sliderSmoothnes.target = currentHitPoints;
         hpText.text = MathF.Round(currentHitPoints, 0) + "/" + MathF.Round(maxHitPoints, 0);
     }
 
