@@ -39,17 +39,17 @@ public class AttributesSystem : MonoBehaviour
     public float playerSprintSpeed { get; private set; }
     public float playerDodgeDistance { get; private set; }
 
-    stat armor = new stat(StatType.Armor);
-    stat attackDamage = new stat(StatType.Damage);
-    stat attackSpeed = new stat(StatType.AttackSpeed, 1);
-    stat moveSpeed = new stat(StatType.MovementSpeed, 7);
-    stat maxHp = new stat(StatType.MaxHP, 100);
+    public stat armor = new stat(StatType.Armor);
+    public stat attackDamage = new stat(StatType.Damage);
+    public stat attackSpeed = new stat(StatType.AttackSpeed, 1);
+    public stat moveSpeed = new stat(StatType.MovementSpeed, 7);
+    public stat maxHp = new stat(StatType.MaxHP, 100);
 
-    stat strength = new stat(StatType.Strength, 10);
-    stat dexterity = new stat(StatType.Dexterity, 10);
-    stat charisma = new stat(StatType.Charisma, 10);
-    stat intelligence = new stat(StatType.Intelligence, 10);
-    stat luck = new stat(StatType.Luck, 10);
+    public stat strength = new stat(StatType.Strength, 10);
+    public stat dexterity = new stat(StatType.Dexterity, 10);
+    public stat charisma = new stat(StatType.Charisma, 10);
+    public stat intelligence = new stat(StatType.Intelligence, 10);
+    public stat luck = new stat(StatType.Luck, 10);
 
     XPSystem playerXPSystem;
 

@@ -65,7 +65,12 @@ public class PlayerInventory : MonoBehaviour
 
     {
         InventoryItemScriptebleObject itemToAdd = ScriptableObject.CreateInstance<InventoryItemScriptebleObject>();
-        if (item.isOneTimeUse) itemToAdd = ScriptableObject.CreateInstance<UsebleItem>();
+        if (item.isOneTimeUse)
+        {
+            itemToAdd = ScriptableObject.CreateInstance<UsebleItem>();
+            UsebleItem usebleItem = itemToAdd as UsebleItem;
+            usebleItem.itemEffects = item.itemEffects;
+        }
         if (item.isEquipeble)
         {
             itemToAdd = ScriptableObject.CreateInstance<EquippableItem>();

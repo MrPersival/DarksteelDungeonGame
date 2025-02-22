@@ -208,7 +208,13 @@ public class InventoryUI : MonoBehaviour
         {
             UsebleItem usebleItem = item as UsebleItem;
             itemPrefab.GetComponent<Button>().onClick.AddListener(() => { usebleItem.useItem(); });
-            itemPrefab.transform.Find("MainStat").GetComponent<TextMeshProUGUI>().text = "HP: " + usebleItem.additionalValue.ToString(); //Make it support all potions
+            itemPrefab.transform.Find("MainStat").GetComponent<TextMeshProUGUI>().text = usebleItem.itemEffects[0].getInfoInString();
+            string toolTipText = "";
+            foreach (UsableItemEffect effect in usebleItem.itemEffects)
+            {
+                toolTipText += effect.getInfoInString();
+            }
+            itemPrefab.GetComponent<ItemTooltipOnHoover>().textToDisplay = toolTipText;
         }
     }
 

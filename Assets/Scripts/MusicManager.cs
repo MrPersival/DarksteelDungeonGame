@@ -65,7 +65,7 @@ public class MusicManager : MonoBehaviour
                 }
                 else if (bossLevel == null || (bossLevel != null && !bossLevel.activeInHierarchy))
                 {
-                    Debug.Log("Playing normal music..."); // Debugging line
+                    //Debug.Log("Playing normal music..."); // Debugging line
 
                     if (audioSource.clip != normalMusic) // plays the normal music
                     {

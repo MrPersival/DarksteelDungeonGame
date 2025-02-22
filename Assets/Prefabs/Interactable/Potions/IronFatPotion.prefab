@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6648358633470943284}
   - component: {fileID: 277376225091381618}
   m_Layer: 7
-  m_Name: HealthPotion
+  m_Name: IronFatPotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,20 +181,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220577b967089aa42b3563129026f022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Medium health potion
-  price: 20
+  itemName: Iron Fat Potion
+  price: 25
   amount: 1
   type: 1
-  subType: 8
+  subType: 10
   dropedObjectPrefab: {fileID: 8058177010834940280}
   isOneTimeUse: 1
   isEquipeble: 0
   additionalValue: 20
   itemEffects:
-  - effectName: Healing
-    itemEffect: 0
-    statChange: 0
+  - effectName: Armor
+    itemEffect: 1
+    statChange: 6
     value: 10
-    hasTimeOfEffect: 0
-    timeOfEffectInSeconds: 0
+    hasTimeOfEffect: 1
+    timeOfEffectInSeconds: 60
+  - effectName: Speed
+    itemEffect: 1
+    statChange: 8
+    value: -2
+    hasTimeOfEffect: 1
+    timeOfEffectInSeconds: 60
   itemStats: []
