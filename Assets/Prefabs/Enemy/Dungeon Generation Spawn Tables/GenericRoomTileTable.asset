@@ -22,7 +22,7 @@ MonoBehaviour:
     rotationOffset: 180
     isRequiesWall: 0
     offset: {x: 0, y: 0.3, z: 0}
-  - chanseToSpawn: 1
+  - chanseToSpawn: 2
     itemToSpawn: {fileID: 9219301023125622440, guid: ccba2f2759c69e74f906a2d58d1b2f07, type: 3}
     isDungeonGenerationPreset: 1
     minDistanceToSameObj: 35
@@ -58,7 +58,7 @@ MonoBehaviour:
     rotationOffset: 180
     isRequiesWall: 1
     offset: {x: 1, y: 0.3, z: 0}
-  - chanseToSpawn: 1
+  - chanseToSpawn: 2
     itemToSpawn: {fileID: 6404211664223802509, guid: 58cbfb3580d463148b362ac0af61a7db, type: 3}
     isDungeonGenerationPreset: 1
     minDistanceToSameObj: 10
@@ -112,7 +112,7 @@ MonoBehaviour:
     rotationOffset: 0
     isRequiesWall: 0
     offset: {x: 0, y: 0.32, z: 0}
-  - chanseToSpawn: 1
+  - chanseToSpawn: 2
     itemToSpawn: {fileID: 136604, guid: c39d6af8061c7594b832d1b44c44a0d5, type: 3}
     isDungeonGenerationPreset: 1
     minDistanceToSameObj: 25
