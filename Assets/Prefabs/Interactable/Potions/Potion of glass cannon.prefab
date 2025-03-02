@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6648358633470943284}
   - component: {fileID: 277376225091381618}
   m_Layer: 7
-  m_Name: SpeedPotion
+  m_Name: Potion of glass cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8058177010834940280}
-  m_Mesh: {fileID: 4300000, guid: a229d7bd34f27694d8fdbff9563a40e7, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 66d814f6f6998db4f96df4b88ce83152, type: 3}
 --- !u!23 &8252364192232448415
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220577b967089aa42b3563129026f022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Speed potion
+  itemName: Glass cannon potion
   price: 25
   amount: 1
   type: 1
@@ -191,10 +191,16 @@ MonoBehaviour:
   isEquipeble: 0
   additionalValue: 20
   itemEffects:
-  - effectName: Haste
+  - effectName: Damage Buff
     itemEffect: 1
-    statChange: 8
-    value: 10
+    statChange: 5
+    value: 25
     hasTimeOfEffect: 1
-    timeOfEffectInSeconds: 30
+    timeOfEffectInSeconds: 60
+  - effectName: Worsen armor
+    itemEffect: 1
+    statChange: 6
+    value: -15
+    hasTimeOfEffect: 1
+    timeOfEffectInSeconds: 60
   itemStats: []
