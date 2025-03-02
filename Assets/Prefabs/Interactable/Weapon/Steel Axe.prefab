@@ -54,7 +54,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3233172872831310601}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -190,12 +190,15 @@ MonoBehaviour:
   isOneTimeUse: 0
   isEquipeble: 1
   additionalValue: 40
+  itemEffects: []
   itemStats:
-  - attributeToChange: 5
+  - statName: 
+    attributeToChange: 5
     value: 20
     isProcent: 0
     isAbsolute: 0
-  - attributeToChange: 1
+  - statName: 
+    attributeToChange: 1
     value: 2
     isProcent: 0
     isAbsolute: 0
