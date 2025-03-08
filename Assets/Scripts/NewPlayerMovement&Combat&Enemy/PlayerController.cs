@@ -80,6 +80,13 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    private void Start()
+    {
+        isTeleporting = true; // Set teleport flag
+        enterPoint = GameObject.Find("EnterPoint(Clone)");
+        teleport(enterPoint.transform.position);
+    }
+
     void Update()
     {
         isGrounded = controller.isGrounded;
@@ -96,12 +103,12 @@ public class PlayerController : MonoBehaviour
 
         SetAnimations();
 
-        if (Input.GetKeyDown(KeyCode.P))
+        /* if (Input.GetKeyDown(KeyCode.P))
         {
             //isTeleporting = true; // Set teleport flag
             enterPoint = GameObject.Find("EnterPoint(Clone)");
             teleport(enterPoint.transform.position);
-        }
+        } */
 
         if(Input.GetMouseButton(0))
         {

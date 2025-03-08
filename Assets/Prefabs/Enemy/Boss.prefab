@@ -2486,8 +2486,8 @@ MonoBehaviour:
     minValue: 4
     lastGeneratedValue: 0
   damage:
-    maxValue: 50
-    minValue: 25
+    maxValue: 70
+    minValue: 60
     lastGeneratedValue: 0
   attackSpeedCoef:
     maxValue: 1.5

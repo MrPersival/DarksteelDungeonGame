@@ -1368,12 +1368,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed:
-    maxValue: 7
+    maxValue: 6
     minValue: 4
     lastGeneratedValue: 0
   damage:
-    maxValue: 20
-    minValue: 5
+    maxValue: 50
+    minValue: 40
     lastGeneratedValue: 0
   attackSpeedCoef:
     maxValue: 1.1
@@ -1427,8 +1427,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c2d3254c820374ba6a1323ba09fa7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxXPToGive: 25
-  minXPToGive: 15
+  maxXPToGive: 60
+  minXPToGive: 40
 --- !u!1 &2526525463856803275
 GameObject:
   m_ObjectHideFlags: 0
