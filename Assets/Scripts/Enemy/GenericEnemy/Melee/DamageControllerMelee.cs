@@ -16,7 +16,7 @@ public class DamageControllerMelee : MonoBehaviour
     }
     public void attackFinished()
     {
-        audiosource.PlayOneShot(attackSound);
+        //audiosource.PlayOneShot(attackSound);
         //Debug.Log("Giving damage");
         foreach (PlayerHitPoints player in playersInAttackRange)
         {

@@ -18,15 +18,19 @@ public class PlayerHitPoints : MonoBehaviour
     [SerializeField]
     SliderSmoothnes sliderSmoothnes;
 
+    PlayerController playerControllerScript;
+
     void Awake()
     {
         currentHitPoints = maxHitPoints;
         updateHitPointsUI();
+        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     public void TakeDamage(float damage)
     {
         currentHitPoints -= damage - (damage * (GetComponent<AttributesSystem>().playerDamageResist / 100));
+        playerControllerScript.DifferentHurtSounds();
         updateHitPointsUI();
         if (currentHitPoints <= 0) Death();
     }

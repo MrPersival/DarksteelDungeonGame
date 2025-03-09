@@ -106,6 +106,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   objectToDeleteOnDeath: {fileID: 0}
+  destroySFX: {fileID: 8300000, guid: b04b32e610cd6e440a9dc8766497b2b3, type: 3}
 --- !u!114 &641161286645411988
 MonoBehaviour:
   m_ObjectHideFlags: 0

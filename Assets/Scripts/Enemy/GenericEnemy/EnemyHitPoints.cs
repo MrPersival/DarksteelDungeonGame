@@ -11,10 +11,22 @@ public class EnemyHitPoints : MonoBehaviour
     public float procentOfHpLeftToCalllFunction;
     public UnityEvent functionToCall;
     public GameObject objectToDeleteOnDeath;
+    //public AudioClip destroySFX;
 
+
+    PlayerController playerControllerScript;
+    //AudioSource audioSource;
     bool isFunctionCalled;
     float currentHitPoints;
 
+
+    private void Start()
+    {
+        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+        //audioSource = gameObject.GetComponent<AudioSource>();
+        
+
+    }
 
     private void Update()
     {
@@ -62,6 +74,8 @@ public class EnemyHitPoints : MonoBehaviour
     void Death()
     {
         GameObject deathParticle = Instantiate(deathEffect, transform.position, deathEffect.transform.rotation);
+        //playerControllerScript.audioSource.PlayOneShot(playerControllerScript.destroyVase);
+        DeathSoundSFX();
         //deathEffect.transform.position = transform.position;
         if (gameObject.TryGetComponent<ItemDrop>(out ItemDrop itemDrop)) itemDrop.dropItem();
         if (gameObject.TryGetComponent<XPDrop>(out XPDrop xPDrop)) xPDrop.giveXP();
@@ -75,5 +89,42 @@ public class EnemyHitPoints : MonoBehaviour
     {
         maxHitPoints = hp;
         currentHitPoints = hp;
+    } 
+    
+    void DeathSoundSFX()
+    {
+        if (gameObject.name == "Vase(Clone)")
+        {
+            playerControllerScript.audioSource.PlayOneShot(playerControllerScript.destroyVaseSFX);
+        }
+        else if (gameObject.name == "Crate(Clone)")
+        {
+            playerControllerScript.audioSource.PlayOneShot(playerControllerScript.destroyCrateSFX);
+        }
+        else if (gameObject.name == "Boss")
+        {
+            playerControllerScript.audioSource.PlayOneShot(playerControllerScript.bossDeathSFX);
+        }
+        else if (gameObject.name == "Character_Skeleton_Knight" || gameObject.name == "Character_Skeleton_Slave_01" || gameObject.name == "Character_Skeleton_Soldier_01" || gameObject.name == "MeleeSkeletonHeavy Variant(Clone)" || gameObject.name == "MeleeSkeletonLight Variant(Clone)" || gameObject.name == "MeleeSkeletonWarrior(Clone)")
+        {
+            float randomSound = Random.Range(1, 3);
+
+            if (randomSound == 1)
+            {
+                playerControllerScript.audioSource.PlayOneShot(playerControllerScript.skeletonDeathSFX1);
+            }
+            else if (randomSound == 2)
+            {
+                playerControllerScript.audioSource.PlayOneShot(playerControllerScript.skeletonDeathSFX2);
+            }
+        }
+        else if (gameObject.name == "Character_Ghost_01" || gameObject.name == "Character_Ghost_02" || gameObject.name == "RangeGhost(Clone)")
+        {
+            playerControllerScript.audioSource.volume = 0.55f;
+            playerControllerScript.audioSource.PlayOneShot(playerControllerScript.ghostDeathSFX);
+            playerControllerScript.audioSource.volume = 1f;
+        }
     }
 }
+
+   

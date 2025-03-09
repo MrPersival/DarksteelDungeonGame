@@ -7789,7 +7789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0763b230d22fd334bbc9441aed267b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossLevelNumber: 3
+  bossLevelNumber: 1
   size: {x: 60, y: 60}
   roomCount: 40
   roomMaxSize: {x: 7, y: 7}
@@ -18158,17 +18158,53 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 4e349dc959014a845b9aa317d1c2b7f0, type: 3}
     - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: hurtSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 330d45f319d269a4aa73c1b5f3114f19, type: 3}
+    - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: hurtSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 609b8ab0415ec464e948273fe26f67b3, type: 3}
+    - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: hurtSound3
+      value: 
+      objectReference: {fileID: 8300000, guid: 99345ff3a8f266540958b227e720cd1d, type: 3}
+    - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: hurtSound4
+      value: 
+      objectReference: {fileID: 8300000, guid: 5383f14321f95b448850d41edb8228da, type: 3}
+    - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 7635435194376255152}
+    - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: bossDeathSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: e406bb9b7aee3324fa0ad53fc5465939, type: 3}
     - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
       propertyPath: levelUpSound
       value: 
       objectReference: {fileID: 8300000, guid: bd720f05cd71c2a448b834e9e01a8c39, type: 3}
     - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: ghostDeathSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 4d0440db245ddf44184d4a5ff5f2ab4e, type: 3}
+    - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: swordHitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6ff0ef29a29633645b84c80cdee0a3a7, type: 3}
+    - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: destroyVaseSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: b04b32e610cd6e440a9dc8766497b2b3, type: 3}
+    - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
       propertyPath: playerTutorial
       value: 
       objectReference: {fileID: 584978478}
+    - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: destroyCrateSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 8447b3086675bd848b17733c594cd7a9, type: 3}
     - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
       propertyPath: pickUpItemSound
       value: 
@@ -18178,9 +18214,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 2b1697c4933d22945a4b40d8a4b456f4, type: 3}
     - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: skeletonDeathSFX1
+      value: 
+      objectReference: {fileID: 8300000, guid: 64300b445a4f60b4a9b9cfa74e43af98, type: 3}
+    - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: skeletonDeathSFX2
+      value: 
+      objectReference: {fileID: 8300000, guid: 57bc54e3be6c401478d48004b6265d3c, type: 3}
+    - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
       propertyPath: holdUntilHeavyAttack
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
+      propertyPath: rangeGhostOrbExplosionSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 35d79f9fc928c3647adc105d67273ebf, type: 3}
     - target: {fileID: 5893619434692166997, guid: 85390c1ad0fa2d548ae4cf4acc3068e2, type: 3}
       propertyPath: heavyAttackIndicatorSlider
       value: 

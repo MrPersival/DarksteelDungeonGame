@@ -19,10 +19,17 @@ public class PlayerController : MonoBehaviour
     public AudioSource audioSource;
 
     [Header("SFX")]
+    public AudioClip destroyCrateSFX;
+    public AudioClip destroyVaseSFX;
     public AudioClip dodgeSound;
     public AudioClip drinkPotionSound;
     public AudioClip pickUpItemSound;
     public AudioClip levelUpSound;
+    public AudioClip bossDeathSFX;
+    public AudioClip skeletonDeathSFX1;
+    public AudioClip skeletonDeathSFX2;
+    public AudioClip ghostDeathSFX;
+    public AudioClip rangeGhostOrbExplosionSFX;
 
     [Header("Controller")]
     public float walkSpeed = 5;
@@ -347,7 +354,11 @@ public class PlayerController : MonoBehaviour
 
     public GameObject hitEffect;
     public AudioClip swordSwing;
-    public AudioClip hitSound;
+    public AudioClip hurtSound1;
+    public AudioClip hurtSound2;
+    public AudioClip hurtSound3;
+    public AudioClip hurtSound4;
+    public AudioClip swordHitSound;
     //public AudioClip heavySound; If we have a special attacking sound for the heavy
     public Slider heavyAttackIndicatorSlider;
 
@@ -514,9 +525,32 @@ public class PlayerController : MonoBehaviour
     void HitTarget(Vector3 pos)
     {
         audioSource.pitch = 1;
-        audioSource.PlayOneShot(hitSound);
+        audioSource.PlayOneShot(swordHitSound);
 
         GameObject GO = Instantiate(hitEffect, pos, Quaternion.identity);
         Destroy(GO, 20);
     }
+
+    public void DifferentHurtSounds()
+    {
+        float randomSound = Random.Range(1, 5);
+
+        if (randomSound == 1)
+        {
+            audioSource.PlayOneShot(hurtSound1);
+        }
+        else if (randomSound == 2)
+        {
+            audioSource.PlayOneShot(hurtSound2);
+        }
+        else if (randomSound == 3)
+        {
+            audioSource.PlayOneShot(hurtSound3);
+        }
+        else if (randomSound == 4)
+        {
+            audioSource.PlayOneShot(hurtSound4);
+        }
+    }
+
 }
