@@ -1127,11 +1127,36 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>Game was made by:</b>\nEric Carls\xE9n\nMax Fredriksson\n\n<b>Assets
-    used:</b>\nRPG_Animations_Pack_FREE by DoubleL\nLite Dungeon Pack - Low Poly
-    3D Art by Gridness Studio\nKenney Game Assets by Kenney\nPOLYGON Dungeons - Low
-    Poly 3D Art by Synty\nQuick Outline by Chris Nolet\nAnd more.\n\nThank you for
-    playing our game!"
+  m_text: '<b>Game was made by:</b>
+
+    Eric
+
+    Max
+
+
+    <b>Assets used:</b>
+
+    RPG_Animations_Pack_FREE
+    by DoubleL
+
+    Lite Dungeon Pack - Low Poly 3D Art by Gridness Studio
+
+    Kenney
+    Game Assets by Kenney
+
+    POLYGON Dungeons - Low Poly 3D Art by Synty
+
+    Quick
+    Outline by Chris Nolet
+
+    And more.
+
+
+    Special thanks to Andreas and TE22.
+
+
+    Thank
+    you for playing our game!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc29e58718e20cd408a4985ab6624df7, type: 2}
   m_sharedMaterial: {fileID: -343506924574470459, guid: dc29e58718e20cd408a4985ab6624df7, type: 2}

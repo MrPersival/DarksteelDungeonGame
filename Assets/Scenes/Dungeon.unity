@@ -2184,13 +2184,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You completed our MVP!
+  m_text: 'You completed the game!
 
     Thank you for playing!
 
-
-    Game was made
-    by Eric and Max'
+    More content
+    to come (maybe).'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c55662d6ce8684c4498ce93ac7d130a9, type: 2}
   m_sharedMaterial: {fileID: -2360056531397967828, guid: c55662d6ce8684c4498ce93ac7d130a9, type: 2}
