@@ -4,30 +4,30 @@ using UnityEngine;
 
 public class TabGroup : MonoBehaviour
 {
-    public List<TabButton> tabButtons;
+    public List<TabButtonUI> tabButtons;
 
-    public void Subscribe(TabButton button)
+    public void Subscribe(TabButtonUI button)
     {
         if(tabButtons == null)
         {
-            tabButtons = new List<TabButton>();
+            tabButtons = new List<TabButtonUI>();
         }
 
         tabButtons.Add(button);
     }
 
-    public void OnTabEnter(TabButton button)
+    public void OnTabEnter(TabButtonUI button)
     {
 
     }
 
-    public void OnTabExit(TabButton button)
+    public void OnTabExit(TabButtonUI button)
     {
 
     }
 
-    public void OnTabSelected(TabButton button)
+    public void OnTabSelected(TabButtonUI button)
     {
-        foreach (TabButton tabButton in tabButtons) tabButton.TabUnclick();
+        foreach (TabButtonUI tabButton in tabButtons) tabButton.TabUnclick();
     }
 }

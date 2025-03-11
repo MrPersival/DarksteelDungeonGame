@@ -7,8 +7,7 @@ using UnityEngine.UI;
 
 public class XPSystem : MonoBehaviour
 {
-    [SerializeField]
-    float xpToLevelUp = 100f;
+    public float xpToLevelUp = 100f;
     [SerializeField]
     int attributesPointsPerLevel = 1;
     [SerializeField]
@@ -17,13 +16,14 @@ public class XPSystem : MonoBehaviour
     TextMeshProUGUI unspendXPPoints;
     [SerializeField]
     Slider xpSlider;
+    [SerializeField]
+    SliderSmoothnes sliderSmoothnes;
 
     PlayerController playerControllerScript;
 
     public int attributesPoints = 0;
     public int playerLevel = 1;
-
-    float xp = 0f;
+    public float xp { get; private set; } = 0f;
 
     private void Start()
     {
@@ -55,7 +55,7 @@ public class XPSystem : MonoBehaviour
             unspendXPPoints.text = Convert.ToString(attributesPoints);
         }
         xpSlider.maxValue = xpToLevelUp;
-        xpSlider.value = xp;
+        sliderSmoothnes.target = xp;
     }
 
     public bool changeAPValue(int value)

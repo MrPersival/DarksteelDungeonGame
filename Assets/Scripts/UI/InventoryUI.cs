@@ -8,6 +8,8 @@ using static InventoryItem;
 
 public class InventoryUI : MonoBehaviour
 {
+    public GameObject player;
+
     public GameObject itemUiPrefab;
 
     public TMP_Dropdown selectionDropdown;
@@ -206,7 +208,13 @@ public class InventoryUI : MonoBehaviour
         {
             UsebleItem usebleItem = item as UsebleItem;
             itemPrefab.GetComponent<Button>().onClick.AddListener(() => { usebleItem.useItem(); });
-            itemPrefab.transform.Find("MainStat").GetComponent<TextMeshProUGUI>().text = "HP: " + usebleItem.additionalValue.ToString(); //Make it support all potions
+            itemPrefab.transform.Find("MainStat").GetComponent<TextMeshProUGUI>().text = usebleItem.itemEffects[0].getInfoInString();
+            string toolTipText = "";
+            foreach (UsableItemEffect effect in usebleItem.itemEffects)
+            {
+                toolTipText += effect.getInfoInString();
+            }
+            itemPrefab.GetComponent<ItemTooltipOnHoover>().textToDisplay = toolTipText;
         }
     }
 
@@ -221,6 +229,7 @@ public class InventoryUI : MonoBehaviour
         {
             if(inv.equippedWeapon != null) inv.equippedWeapon.isEquiped = false;
             inv.equippedWeapon = equippableItem;
+            player.GetComponent<ChangeWeapon>().EquipWeapon(equippableItem.mesh, equippableItem.materials);
             //controller.attackDamage = equippableItem.additionalValue;
         }
         else

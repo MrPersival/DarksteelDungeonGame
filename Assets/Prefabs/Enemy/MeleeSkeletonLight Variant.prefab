@@ -54,19 +54,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 262757656334924862, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
       propertyPath: damage.maxValue
-      value: 10
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 262757656334924862, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
       propertyPath: damage.minValue
-      value: 5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 262757656334924862, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
       propertyPath: hitPoints.maxValue
-      value: 20
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 262757656334924862, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
       propertyPath: hitPoints.minValue
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 262757656334924862, guid: 4ccca97adfd7f7348bb89d56bb476e22, type: 3}
       propertyPath: attackSpeedCoef.maxValue
@@ -288,5 +288,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c2d3254c820374ba6a1323ba09fa7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxXPToGive: 25
-  minXPToGive: 15
+  maxXPToGive: 60
+  minXPToGive: 40

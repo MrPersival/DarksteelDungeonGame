@@ -13,17 +13,24 @@ public class PlayerHitPoints : MonoBehaviour
     public UnityEngine.UI.Slider hpSlider;
     public TMP_Text hpText;
     public GameObject gameOverScreen;
+    public bool isDead = false;
     float currentHitPoints;
+    [SerializeField]
+    SliderSmoothnes sliderSmoothnes;
+
+    PlayerController playerControllerScript;
 
     void Awake()
     {
         currentHitPoints = maxHitPoints;
         updateHitPointsUI();
+        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     public void TakeDamage(float damage)
     {
         currentHitPoints -= damage - (damage * (GetComponent<AttributesSystem>().playerDamageResist / 100));
+        playerControllerScript.DifferentHurtSounds();
         updateHitPointsUI();
         if (currentHitPoints <= 0) Death();
     }
@@ -38,7 +45,7 @@ public class PlayerHitPoints : MonoBehaviour
     {
         if (maxHitPoints >= currentHitPoints) hpSlider.maxValue = maxHitPoints;
         else hpSlider.maxValue = currentHitPoints;
-        hpSlider.value = currentHitPoints;
+        sliderSmoothnes.target = currentHitPoints;
         hpText.text = MathF.Round(currentHitPoints, 0) + "/" + MathF.Round(maxHitPoints, 0);
     }
 
@@ -49,6 +56,7 @@ public class PlayerHitPoints : MonoBehaviour
         UnityEngine.Cursor.visible = true;
         UnityEngine.Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0f;
+        isDead = true;
         gameOverScreen.SetActive(true);
         
     }

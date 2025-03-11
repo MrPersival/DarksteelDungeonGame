@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Pick up (press e)
-  inventoryItem: {fileID: 1589933617650893878, guid: bf69f06455c2efc439059cbfc6fdd124, type: 3}
+  inventoryItem: {fileID: 277376225091381618}
 --- !u!114 &5197867611587906511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,8 +185,16 @@ MonoBehaviour:
   price: 20
   amount: 1
   type: 1
-  subType: 7
-  dropedObjectPrefab: {fileID: 805291593947733036, guid: bf69f06455c2efc439059cbfc6fdd124, type: 3}
+  subType: 8
+  dropedObjectPrefab: {fileID: 8058177010834940280}
   isOneTimeUse: 1
   isEquipeble: 0
   additionalValue: 20
+  itemEffects:
+  - effectName: Healing
+    itemEffect: 0
+    statChange: 0
+    value: 10
+    hasTimeOfEffect: 0
+    timeOfEffectInSeconds: 0
+  itemStats: []

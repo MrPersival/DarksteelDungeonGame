@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
-using static UnityEditor.Progress;
-
 public class RoomTile : MonoBehaviour
 {
     public GameObject WallPosX;

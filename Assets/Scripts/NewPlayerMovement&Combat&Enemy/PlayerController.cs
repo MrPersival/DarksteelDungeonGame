@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     private PlayerInput playerInput;
     public PlayerInput.MainActions input;
+    public PlayerTutorial playerTutorial;
 
     CharacterController controller;
     private InventoryItem inventoryItemScript;
@@ -17,10 +19,17 @@ public class PlayerController : MonoBehaviour
     public AudioSource audioSource;
 
     [Header("SFX")]
+    public AudioClip destroyCrateSFX;
+    public AudioClip destroyVaseSFX;
     public AudioClip dodgeSound;
     public AudioClip drinkPotionSound;
     public AudioClip pickUpItemSound;
     public AudioClip levelUpSound;
+    public AudioClip bossDeathSFX;
+    public AudioClip skeletonDeathSFX1;
+    public AudioClip skeletonDeathSFX2;
+    public AudioClip ghostDeathSFX;
+    public AudioClip rangeGhostOrbExplosionSFX;
 
     [Header("Controller")]
     public float walkSpeed = 5;
@@ -78,6 +87,13 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    private void Start()
+    {
+        isTeleporting = true; // Set teleport flag
+        enterPoint = GameObject.Find("EnterPoint(Clone)");
+        teleport(enterPoint.transform.position);
+    }
+
     void Update()
     {
         isGrounded = controller.isGrounded;
@@ -94,11 +110,27 @@ public class PlayerController : MonoBehaviour
 
         SetAnimations();
 
-        if (Input.GetKeyDown(KeyCode.P))
+        /* if (Input.GetKeyDown(KeyCode.P))
         {
             //isTeleporting = true; // Set teleport flag
             enterPoint = GameObject.Find("EnterPoint(Clone)");
             teleport(enterPoint.transform.position);
+        } */
+
+        if(Input.GetMouseButton(0))
+        {
+            holdingLMBSeconds += Time.deltaTime;
+            if(holdingLMBSeconds > 0.5)
+            {
+                heavyAttackIndicatorSlider.gameObject.SetActive(true);
+                heavyAttackIndicatorSlider.value = holdingLMBSeconds;
+                heavyAttackIndicatorSlider.maxValue = holdUntilHeavyAttack;
+            }
+        }
+        if(Input.GetMouseButtonUp(0) || isHeavyAttack)
+        {
+            holdingLMBSeconds = 0;
+            heavyAttackIndicatorSlider.gameObject.SetActive(false);
         }
     }
 
@@ -126,10 +158,12 @@ public class PlayerController : MonoBehaviour
 
         // Calculate the movement direction
         Vector3 moveDirection = new Vector3(input.x, 0, input.y);
+        if (moveDirection != Vector3.zero) playerTutorial.playerMoved();
 
         // Check if sprinting conditions are met
         if (isSprintButtonPressed)
         {
+            playerTutorial.playerSprintet();
             // Allow sprinting when moving forward or diagonally forward
             if (input.y > 0 && input.magnitude >= 0.5f) // Magnitude check allows diagonal movement
             {
@@ -147,6 +181,7 @@ public class PlayerController : MonoBehaviour
 
         // Determine the movement speed
         float speed = isSprinting ? attributesSystem.playerSprintSpeed : attributesSystem.playerMoveSpeed;
+
 
         // Apply gravity and move the player
         _PlayerVelocity.y += gravity * Time.deltaTime;
@@ -190,6 +225,7 @@ public class PlayerController : MonoBehaviour
 
     void Dodge()
     {
+
         if (!canDodge || isDodging) return;
 
         Vector2 moveInput = input.Movement.ReadValue<Vector2>();
@@ -200,7 +236,7 @@ public class PlayerController : MonoBehaviour
             // Determine the dodge direction
             Vector3 dodgeDirection = new Vector3(moveInput.x, 0, moveInput.y).normalized;
             dodgeDirection = transform.TransformDirection(dodgeDirection);
-
+            playerTutorial.playerDodged();
             // Start the dodge
             StartCoroutine(PerformDodge(dodgeDirection));
             audioSource.PlayOneShot(dodgeSound);
@@ -318,8 +354,13 @@ public class PlayerController : MonoBehaviour
 
     public GameObject hitEffect;
     public AudioClip swordSwing;
-    public AudioClip hitSound;
+    public AudioClip hurtSound1;
+    public AudioClip hurtSound2;
+    public AudioClip hurtSound3;
+    public AudioClip hurtSound4;
+    public AudioClip swordHitSound;
     //public AudioClip heavySound; If we have a special attacking sound for the heavy
+    public Slider heavyAttackIndicatorSlider;
 
     private float pressTime;
     private float releaseTime;
@@ -327,6 +368,7 @@ public class PlayerController : MonoBehaviour
     private bool isHeavyAttack = false;
     private float time_until_heavy_hits = 0.6f;
     private Coroutine holdMonitorCoroutine;
+    private float holdingLMBSeconds;
 
     bool attacking = false;
     bool readyToAttack = true;
@@ -345,6 +387,7 @@ public class PlayerController : MonoBehaviour
             float finalDamage = attackDamage;
             if (holdDuration >= holdUntilHeavyAttack) // Heavy attack condition
             {
+                playerTutorial.playerHeavyAttacked();
                 isHeavyAttack = true;
                 ChangeAnimationState(HEAVY_ATTACK);
                 Debug.Log("Heavy Attack! Double damage");
@@ -353,6 +396,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                playerTutorial.playerAttacked();
                 Debug.Log("Normal Attack");
                 isHeavyAttack = false;
                 audioSource.pitch = Random.Range(0.9f, 1.1f);
@@ -481,9 +525,32 @@ public class PlayerController : MonoBehaviour
     void HitTarget(Vector3 pos)
     {
         audioSource.pitch = 1;
-        audioSource.PlayOneShot(hitSound);
+        audioSource.PlayOneShot(swordHitSound);
 
         GameObject GO = Instantiate(hitEffect, pos, Quaternion.identity);
         Destroy(GO, 20);
     }
+
+    public void DifferentHurtSounds()
+    {
+        float randomSound = Random.Range(1, 5);
+
+        if (randomSound == 1)
+        {
+            audioSource.PlayOneShot(hurtSound1);
+        }
+        else if (randomSound == 2)
+        {
+            audioSource.PlayOneShot(hurtSound2);
+        }
+        else if (randomSound == 3)
+        {
+            audioSource.PlayOneShot(hurtSound3);
+        }
+        else if (randomSound == 4)
+        {
+            audioSource.PlayOneShot(hurtSound4);
+        }
+    }
+
 }

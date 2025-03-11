@@ -10,12 +10,15 @@ public class ItemTooltipOnHoover : MonoBehaviour, IPointerEnterHandler, IPointer
     TextMeshProUGUI textObj;
     [SerializeField]
     GameObject tooltipHolder;
-    public string textToDisplay = "Test text";
+    public string textToDisplay = "";
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        tooltipHolder.SetActive(true);
-        textObj.text = textToDisplay;
+        if(textToDisplay != "")
+        {
+            tooltipHolder.SetActive(true);
+            textObj.text = textToDisplay;
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)

@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
-using static UnityEditor.Progress;
-
 
 [CreateAssetMenu(fileName = "New Spawn Table", menuName = "Spawn Table")]
 public class SpawnTable : ScriptableObject

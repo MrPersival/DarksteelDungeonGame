@@ -108,7 +108,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
@@ -219,9 +219,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.7, y: 2.54, z: 0.08757019}
+  m_Size: {x: 1.7, y: 2.54, z: 0.27}
   m_Center: {x: -0.6437931, y: -0.12, z: -0.0000038146973}
 --- !u!1 &2051381787167694367
 GameObject:
@@ -324,7 +324,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
@@ -337,6 +337,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 422786}
     m_Modifications:
+    - target: {fileID: 5280965361829486429, guid: a45fe9645c1b6af4db320d3302c6aad2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308260610021437451, guid: a45fe9645c1b6af4db320d3302c6aad2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8ee23d3fa5d76d7459cfe1744e6a6b1b, type: 2}
     - target: {fileID: 5308260610023321435, guid: a45fe9645c1b6af4db320d3302c6aad2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.704
