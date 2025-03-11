@@ -7789,7 +7789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0763b230d22fd334bbc9441aed267b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossLevelNumber: 1
+  bossLevelNumber: 3
   size: {x: 60, y: 60}
   roomCount: 40
   roomMaxSize: {x: 7, y: 7}
